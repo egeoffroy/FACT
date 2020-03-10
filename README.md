@@ -20,7 +20,7 @@
 Please see the wiki. 
 
 ## Input: 
-#### Gene Expression Prediction Model db file
+#### Gene Expression Prediction model db file
 #### GWAS Summary Statistics file
 #### n: the number of individuals in the model
 
