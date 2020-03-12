@@ -20,6 +20,19 @@
 ## Install Software
 
 ### DAP-G 
+The following C/C++ libraries are required for compiling the source code
+
+GNU GSL library
+OpenMP compiler (many popular compilers are compatible)
+Simply run ```make``` to compile the executable named ```dap```.
+
+Run ```make static``` to compile an executable with static linked library.
+##### Example
+```
+cd dap/dap_src
+make 
+make static 
+```
 
 ### TORUS
 
