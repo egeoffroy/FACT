@@ -5,6 +5,7 @@
 #### - Python3
                 - os
                 - subprocess
+                - shlex
 #### - R 
                 - dplyr
                 - data.table
@@ -15,6 +16,15 @@
 #### - DAP-G: https://github.com/xqwen/dap
 #### - TORUS: https://github.com/xqwen/torus
 #### - FASTENLOC: https://github.com/xqwen/fastenloc
+
+## Install Software
+
+### DAP-G 
+
+### TORUS
+
+### FASTENLOC 
+
 
 ## Tutorial:
 Please see the wiki. 
