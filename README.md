@@ -45,7 +45,9 @@ make static
 Please see the wiki. 
 
 ## Input: 
-#### Gene Expression Prediction model db file
+#### Gene Expression Prediction matrix eQTL file
+#### Linkage Disequilibrium annotation file 
+#### Gene Annotation file
 #### GWAS Summary Statistics file
 #### n: the number of individuals in the model
 
