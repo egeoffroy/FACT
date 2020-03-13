@@ -41,5 +41,7 @@ os.system('bash qsub_01.txt')
 os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
 os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
 os.system('bash 03_all1MbSNPs_torus.sh' + geno_folder + ' ' + genemapfile + ' ' + pop)
+os.system('python3 04_all1MbSNPs_batch_dapg.py --pop ' + pop)
+
 
 
