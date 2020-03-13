@@ -11,7 +11,7 @@ def check_arg(args=None):
     return parser.parse_args(args)
 args = check_arg(sys.argv[1:])
 pop = args.pop
-datlist = os.listdir(path=pop+'_sbams')
+datlist = os.listdir(path=pop+'_all1Mb_sbams')
 
 outfile = open(pop+"_all1Mb_batch_scan.cmd","w")
 for f in datlist:
