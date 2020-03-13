@@ -2,6 +2,7 @@
 '''make file with batch commands to run dap-g scan for 1Mb SNPs within each gene'''
 import os
 import argparse
+import sys
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Run dap-g scan for 1Mb SNPs within each gene')
     parser.add_argument('-b', '--pop',
