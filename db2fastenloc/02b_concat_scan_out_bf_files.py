@@ -4,6 +4,7 @@
 # *.bf output from scan_out includes snp, log10BF, beta, se, t-stat
 import os
 import argparse
+import sys
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Make SNP gene logBF file for TORUS')
     parser.add_argument('-b', '--pop',
