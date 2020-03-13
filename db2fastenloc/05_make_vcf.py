@@ -7,12 +7,29 @@ column headers needed:
 
 import os
 import gzip
+import argparse
+def check_arg(args=None):
+    parser = argparse.ArgumentParser(description='Make VCF of SNPs')
+    parser.add_argument('-g', '--geno',
+                        help='input genotype folder',
+                        required='True'
+                        )
+    parser.add_argument('-b', '--pop',
+                        help='group/pop id for group_id column of .dat file',
+                        required='True'
+                        )
+    return parser.parse_args(args)
 
-gtdir = "/home/wheelerlab3/files_for_revisions_plosgen/en_v7/prepare_data/genotypes/"
-outvcf = gzip.open("AFA_cposid.vcf.gz", "wb")
+#retrieve command line arguments
+args = check_arg(sys.argv[1:])
+geno_folder = args.geno
+pop = args.pop
+
+gtdir = geno_folder
+outvcf = gzip.open(pop+"_cposid.vcf.gz", "wb")
 outvcf.write("#CHROM\tPOS\tID\tREF\tALT\n".encode('utf-8')) #encode for gzip
 for i in range(1,23):
-    for line in open(gtdir + "AFA_" + str(i) + "_annot.txt"):
+    for line in open(gtdir + pop +"_" + str(i) + "_annot.txt"):
         arr = line.strip().split()
         (chr, pos, id, ref, alt) = arr[0:5]
         if chr == "chr":
