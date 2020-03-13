@@ -37,4 +37,4 @@ outdir = args.outdir
 pop = args.pop
 
 os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir' + pop + '_sbams/')
-os.system('bash qsub.txt')
+os.system('bash qsub_01.txt')
