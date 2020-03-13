@@ -22,8 +22,20 @@ def check_arg(args=None):
                         help='group/pop id for group_id column of .dat file',
                         required='True'
                         )
-    parser.add_argument('-o', '--outdir',
+    parser.add_argument('-dat', '--out_dat_dir',
                         help='output .dat file directory',
+                        required='True'
+                        )
+    parser.add_argument('-gwas', '--gwas_SS',
+                        help='GWAS Summary Statistics File',
+                        required='True'
+                        )
+    parser.add_argument('-LD', '--LD',
+                        help='LD blocks locus file',
+                        required='True'
+                        )
+    parser.add_argument('-gwas_out_prefix', '--gwas_out_prefix',
+                        help='prefix for GWAS Summary Statistics reformatted file',
                         required='True'
                         )
     return parser.parse_args(args)
@@ -33,8 +45,11 @@ args = check_arg(sys.argv[1:])
 geno_folder = args.geno
 phenofile = args.pheno
 genemapfile = args.genemap
-outdir = args.outdir
+outdir = args.dat
 pop = args.pop
+gwasSS = args.gwas_SS
+LD = args.LD
+gwas_prefix = args.gwas_out_prefix
 
 os.system('mkdir ' + pop + '_all1Mb_sbams')
 os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir' + pop + '_sbams/')
@@ -45,6 +60,7 @@ os.system('bash 03_all1MbSNPs_torus.sh' + geno_folder + ' ' + genemapfile + ' ' 
 os.system('python3 04_all1MbSNPs_batch_dapg.py --pop ' + pop)
 os.system('python3 05_make_vcf.py --geno ' + geno_folder + ' --pop' + pop)
 os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop) #Run script 06
+os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD + '--s ' + gwasSS + ' --annot ' +pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
 
 
 
