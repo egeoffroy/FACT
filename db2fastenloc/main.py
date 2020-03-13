@@ -43,6 +43,8 @@ os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
 os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
 os.system('bash 03_all1MbSNPs_torus.sh' + geno_folder + ' ' + genemapfile + ' ' + pop)
 os.system('python3 04_all1MbSNPs_batch_dapg.py --pop ' + pop)
+os.system('python3 05_make_vcf.py --geno ' + geno_folder + ' --pop' + pop)
+os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop) #Run script 06
 
 
 
