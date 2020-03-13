@@ -36,6 +36,7 @@ genemapfile = args.genemap
 outdir = args.outdir
 pop = args.pop
 
+os.system('mkdir ' + pop + '_all1Mb_sbams')
 os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir' + pop + '_sbams/')
 os.system('bash qsub_01.txt')
 os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
