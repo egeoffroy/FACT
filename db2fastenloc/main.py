@@ -57,17 +57,17 @@ LD = args.LD
 gwas_prefix = args.gwas_out_prefixes
 
 os.system('mkdir ' + pop + '_all1Mb_sbams')
-os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir' + pop + '_sbams/')
-os.system('bash qsub_01.txt')
+os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir' + pop + '_all1Mb_sbams/')
+os.system('bash nohup_01.txt')
 os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
-os.system('nohup run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop)
+os.system('nohup run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop + ' &')
 os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
-os.system('bash 03_all1MbSNPs_torus.sh ' + geno_folder + ' ' + genemapfile + ' ' + pop)
-os.system('python3 04_all1MbSNPs_batch_dapg.py --pop ' + pop)
+os.system('nohup bash 03_all1MbSNPs_torus.sh ' + geno_folder + ' ' + genemapfile + ' ' + pop + ' &')
+os.system('nohup bash run_scripts/run_04_all1MbSNPs_batch_dapg.sh ' + pop+ " &")
 os.system('python3 05_make_vcf.py --geno ' + geno_folder + ' --pop' + pop)
-os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop) #Run script 06
+os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop+ ' &') #Run script 06
 
-for i in range(gwas_n): 
+for i in range(gwas_n):
     os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD + '--s ' + gwasSS[i] + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix[i])
     os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix[i])
     os.system('bash 09_all1MbSNPs_fastenloc.sh ' + gwas_prefix[i] + ' ' + pop)
