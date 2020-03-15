@@ -64,7 +64,7 @@ os.system('nohup run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop + ' &')
 os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
 os.system('nohup bash 03_all1MbSNPs_torus.sh ' + geno_folder + ' ' + genemapfile + ' ' + pop + ' &')
 os.system('nohup bash run_scripts/run_04_all1MbSNPs_batch_dapg.sh ' + pop+ " &")
-os.system('python3 05_make_vcf.py --geno ' + geno_folder + ' --pop' + pop)
+os.system('nohup bash run_scripts/run_05_make_vcf.py  '+ geno_folder + ' ' + pop+' &')
 os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop+ ' &') #Run script 06
 
 for i in range(gwas_n):
