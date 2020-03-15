@@ -8,6 +8,7 @@ column headers needed:
 import os
 import gzip
 import argparse
+import sys
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Make VCF of SNPs')
     parser.add_argument('-g', '--geno',
