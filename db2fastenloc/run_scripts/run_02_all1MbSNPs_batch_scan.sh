@@ -9,7 +9,7 @@
 #cd $PBS_O_WORKDIR
 pop=$1
 mkdir ${pop}_all1Mb_scan_out
-python3 02_all1MbSNPs_batch_scan.py
+python3 02_all1MbSNPs_batch_scan.py --pop ${pop}
 #run batch scan across 32 cores
 /usr/local/bin/openmp_wrapper -d ${pop}_all1Mb_batch_scan.cmd -t 32
 #combine output files
