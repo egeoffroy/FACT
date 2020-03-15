@@ -52,7 +52,7 @@ for i in range(1,23):
 #PBS -l mem=16gb
 #PBS -o logs/${PBS_JOBNAME}.o${PBS_JOBID}.log
 #PBS -e logs/${PBS_JOBNAME}.e${PBS_JOBID}.err
-cd $PBS_O_WORKDIR
+#cd $PBS_O_WORKDIR
 
 '''
     outfile.write(output)
