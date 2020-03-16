@@ -1,8 +1,9 @@
-## GWAS Summary Statistics data steps
+## GWAS Summary Statistics 
+
+### Use these scripts if you need to change the build of the GWAS Summary Statistics from hg19 to hg38.
 
 ### Scripts:
-#### liftover_GWAS_SS.R : R script to transform the GWAS Summary Statistics data from genome build hg19 to hg38. This script is called when the user specifies the --liftover flag.
-
-      - assoc: GWAS Summary Statistics file
-      - LD : LD blocking file 
-      - o : output file path
+#### liftover_GWAS_SS.R : R script to transform the GWAS Summary Statistics data from genome build hg19 to hg38. 
+**Parameters: **
+      - GWAS : GWAS Summary Statistics File
+      - out : output file path
