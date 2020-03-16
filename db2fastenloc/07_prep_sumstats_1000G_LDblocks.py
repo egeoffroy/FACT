@@ -37,6 +37,12 @@ sumstatsfile = args.sumstats
 annotfile = args.annot
 outprefix = args.outprefix
 
+#get column names for beta and se from R function
+column = open("column_numbers.csv").readlines()
+beta_column = int(column[1].replace('\n', ''))
+se_column = int(column[2].replace('\n', ''))
+
+
 #make Z-score (beta/se) dictionary from sumstats
 #you may need to choose diff columns depending on sumstat format
 zdict = dict()
@@ -45,8 +51,9 @@ for line in gzip.open(sumstatsfile):
     #convert bytes to str for each item in list
     arr = [x.decode("utf-8") for x in arr]
     (chr, bp, oallele, eallele) = arr[0:4]
-    beta = arr[6]
-    se = arr[7]
+    beta = arr[beta_column+1]
+    #print(beta)
+    se = arr[se_column+1]
     if beta == "beta" or beta == "Beta": #skip header and extra rows
         continue
     zscore = float(beta)/float(se)
