@@ -9,8 +9,6 @@
 #### - R 
                 - dplyr
                 - data.table
-                - stringr
-                - SQLite
                 
 ## Software Required:
 #### - DAP-G: https://github.com/xqwen/dap
@@ -50,17 +48,6 @@ git clone https://github.com/xqwen/fastenloc.git
 cd fastenloc/src
 make
 ```
-
-##### Example
-```
-cd dap/dap_src
-make 
-make static 
-```
-
-### TORUS
-
-### FASTENLOC 
 
 
 ## Tutorial:
