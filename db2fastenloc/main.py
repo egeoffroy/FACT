@@ -49,7 +49,7 @@ args = check_arg(sys.argv[1:])
 geno_folder = args.geno
 phenofile = args.pheno
 genemapfile = args.genemap
-outdir = args.dat
+outdir = args.out_dat_dir
 pop = args.pop
 gwas_n = args.gwas_n #This may not be needed 
 gwasSS = args.gwas_SS
@@ -57,7 +57,9 @@ LD = args.LD
 gwas_prefix = args.gwas_out_prefixes
 
 os.system('mkdir ' + pop + '_all1Mb_sbams')
-os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir' + pop + '_all1Mb_sbams/')
+os.system('mkdir ' + pop + '_all1Mb_scan_out')
+os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams')
+#work on timing between steps to prevent the program from going over steps before files are ready
 os.system('bash nohup_01.txt')
 os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
 os.system('nohup run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop + ' &')
