@@ -28,6 +28,28 @@ OpenMP compiler (many popular compilers are compatible)
 Simply run ```make``` to compile the executable named ```dap```.
 
 Run ```make static``` to compile an executable with static linked library.
+```
+git clone https://github.com/xqwen/dap.git
+cd dap/dap_src
+make
+```
+
+### TORUS
+
+
+```
+git clone https://github.com/xqwen/torus.git
+cd torus/src
+make
+```
+
+### FASTENLOC 
+
+```
+git clone https://github.com/xqwen/fastenloc.git
+cd fastenloc/src
+make
+```
 
 ##### Example
 ```
