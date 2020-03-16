@@ -59,7 +59,7 @@ genodict = dict()
 for line in open(genofile):
     arr = line.strip().split()
     snp = arr[0]
-    if snp == "id":
+    if snp == "id" or snp == "rsid":
         continue #skip header
     chr = snp.split("_")[0] #retrieve chromosome
     gts = arr[1:]
