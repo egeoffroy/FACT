@@ -69,7 +69,7 @@ os.system('nohup bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop+ ' &') #Run s
 
 for i in range(gwas_n):
     os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD + '--s ' + gwasSS[i] + ' --pop ' + pop + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix[i])
-    os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix[i])
-    os.system('bash 09_all1MbSNPs_fastenloc.sh ' + gwas_prefix[i] + ' ' + pop)
+    os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix[i] + ' ' + pop)
+    os.system('nohup bash 09_all1MbSNPs_fastenloc.sh ' + gwas_prefix[i] + ' ' + pop + ' &')
 
 
