@@ -2,6 +2,7 @@
 '''run dap-g using db SNPs for each gene'''
 import os
 import argparse
+import sys
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Run dap-g using all SNPs for each gene')
     parser.add_argument('-b', '--pop',
