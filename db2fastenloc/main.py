@@ -58,12 +58,11 @@ gwas_prefix = args.gwas_out_prefixes
 
 if geno :
     os.system('mkdir ' + pop + '_all1Mb_sbams')
-    os.system('mkdir ' + pop + '_all1Mb_scan_out')
     os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams')
     #work on timing between steps to prevent the program from going over steps before files are ready
     os.system('bash nohup_01.txt')
-    os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
-    os.system('nohup run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop + ' &')
+    #os.system('python3 02_all1MbSNPs_batch_scan.py --pop ' + pop)
+    os.system('nohup bash run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop + ' &')
     os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
     os.system('nohup bash 03_all1MbSNPs_torus.sh ' + geno_folder + ' ' + genemapfile + ' ' + pop + ' &')
     os.system('nohup bash run_scripts/run_04_all1MbSNPs_batch_dapg.sh ' + pop+ " &")

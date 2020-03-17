@@ -17,9 +17,13 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-s', '--sumstats',
-			help='input summary stats file',
-			required='True'
-			)
+                        help='input summary stats file',
+                        required='True'
+                        )
+    parser.add_argument('-pop', '--pop',
+                        help='input population',
+                        required='True'
+                        )
     parser.add_argument('-a', '--annot',
                         help='input fastenloc eQTL annot file',
                         required='True'
@@ -33,11 +37,14 @@ def check_arg(args=None):
 #retrieve command line arguments
 args = check_arg(sys.argv[1:])
 ldfile = args.ldblocks
+pop = args.pop
 sumstatsfile = args.sumstats
 annotfile = args.annot
 outprefix = args.outprefix
 
 #get column names for beta and se from R function
+import os
+os.system('Rscript 07a_sumstats_names.R ' + sumstatsfile)
 column = open("column_numbers.csv").readlines()
 beta_column = int(column[1].replace('\n', ''))
 se_column = int(column[2].replace('\n', ''))
@@ -51,11 +58,15 @@ for line in gzip.open(sumstatsfile):
     #convert bytes to str for each item in list
     arr = [x.decode("utf-8") for x in arr]
     (chr, bp, oallele, eallele) = arr[0:4]
-    beta = arr[beta_column+1]
+    beta = arr[beta_column]
     #print(beta)
-    se = arr[se_column+1]
+    se = arr[se_column]
+    #print(head(se))
     if beta == "beta" or beta == "Beta": #skip header and extra rows
         continue
+    #if se == "standard_error" or se == "SE":
+    #    continue
+    se = float(se)
     zscore = float(beta)/float(se)
     snpid = chr + "_" + bp + "_" + oallele + "_" + eallele + "_b37"
     zdict[snpid] = zscore
