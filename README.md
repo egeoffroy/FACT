@@ -51,7 +51,7 @@ make
 
 
 ## Tutorial:
-Please see the wiki. 
+Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
 
 ## Input: 
 #### Gene Expression Prediction matrix eQTL file
