@@ -20,10 +20,6 @@ def check_arg(args=None):
                         help='input summary stats file',
                         required='True'
                         )
-    parser.add_argument('-pop', '--pop',
-                        help='input population',
-                        required='True'
-                        )
     parser.add_argument('-a', '--annot',
                         help='input fastenloc eQTL annot file',
                         required='True'
@@ -37,7 +33,6 @@ def check_arg(args=None):
 #retrieve command line arguments
 args = check_arg(sys.argv[1:])
 ldfile = args.ldblocks
-pop = args.pop
 sumstatsfile = args.sumstats
 annotfile = args.annot
 outprefix = args.outprefix

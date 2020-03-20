@@ -7,7 +7,7 @@
                 - subprocess
                 - shlex
                 - argparse
-                
+
 #### - R 
                 - dplyr
                 - data.table
@@ -70,4 +70,4 @@ signal cluster name (from eQTL analysis), number of member SNPs, cluster PIP of 
 signal cluster name, SNP name, SNP-level PIP of eQTLs, SNP-level PIP of GWAS (without eQTL prior), SNP-level PIP of GWAS (with eQTL prior), SNP-level colocalization probability
 4. A sorted list of colocalization signals
 5. Potentially some figures to analyze the output 
-
+6. Log file that displays pipeline steps.
