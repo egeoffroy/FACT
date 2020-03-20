@@ -56,11 +56,11 @@ make
 Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
 
 ## Input: 
-#### Gene Expression Prediction matrix eQTL file
-#### Linkage Disequilibrium annotation file 
-#### Gene Annotation file
-#### GWAS Summary Statistics file
-#### n: the number of individuals in the model
+* --geno : Gene Expression Prediction matrix eQTL folder
+* --LD : Linkage Disequilibrium annotation file 
+* --genemap : Gene Annotation file
+* --gwas_SS : GWAS Summary Statistics file
+* --gwas_n : n: the number of individuals in the model
 
 ## Output:
 1. Enrichment analysis result: estimated enrichment parameters and standard errors.
