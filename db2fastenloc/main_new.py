@@ -70,7 +70,7 @@ def main():
     subprocess.run(out_cmd, shell=True)
 
     #change logger info here
-    logging.info("Running")
+    logging.info("Running ")
     run_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --pheno {} --genemap {} --pop {} --outdir {}_all1Mb_sbams'.format(geno_folder, phenofile, genemapfile, pop, pop)
     subprocess.run(run_cmd, shell=True)
 
@@ -85,7 +85,7 @@ def main():
 
     logging.info("Run nohup batch scan ")
     batch2_cmd = 'run_scripts/run_02_all1MbSNPs_batch_scan.sh {} &'.format(pop)
-    subprocess.run('batch2_cmd, shell=True)
+    subprocess.run('batch2_cmd, shell=True')
 
     #add logger info
     logging.info("")
@@ -95,10 +95,10 @@ def main():
 
     logging.info("Running Torus shell script")
     torus_cmd = 'bash 03_all1MbSNPs_torus.sh {} {} {}'.format(geno_folder,genemapfile,pop)
-    subprocess.run('torus_cmd, shell=True)
+    subprocess.run('torus_cmd, shell=True')
 
-    logging.info("Running dapg")
-    dapg_cmd = 'bash run_scripts/run_04_all1MbSNPs_batch_dapg.sh {} '.format(pop)
+    logging.info('Running DAP-G')
+    dapg_cmd = 'bash run_scripts/run_04_all1MbSNPs_batch_dapg.sh {}'.format(pop)
     subprocess.run(dapg_cmd, shell=True)
 
     logging.info("Running make Vcf")
