@@ -22,7 +22,7 @@
 ### DAP-G 
 The following C/C++ libraries are required for compiling the source code
 
-GNU GSL library
+GNU [GSL](https://www.gnu.org/software/gsl/) library
 OpenMP compiler (many popular compilers are compatible)
 
 Simply run ```make``` to compile the executable named ```dap```.
@@ -61,6 +61,19 @@ Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki).
 * --genemap : Gene Annotation file
 * --gwas_SS : GWAS Summary Statistics file
 * --gwas_n : n: the number of individuals in the model
+
+## Scripts
+1. Convert mEQTL file to .dat files → file for every gene
+2. Run DAP-G with each dat file
+3. Run TORUS with eQTL data
+4. Run DAP-G with eQTL data
+5. Make .vcf file
+6. Make fastenloc annotation file for eQTL data.
+7. Identify important columns in GWAS Summary Statistics file. Transform GWAS SS file to include z-scores and label LD blocks using LD annotation file and fastenloc annotation file.
+8. Run torus with GWAS SS data
+9. Run fastenloc with GWAS SS data
+10. Identify significant genes with RCP > 0.5
+
 
 ## Output:
 1. Enrichment analysis result: estimated enrichment parameters and standard errors.
