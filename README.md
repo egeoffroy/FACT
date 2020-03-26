@@ -84,3 +84,11 @@ signal cluster name, SNP name, SNP-level PIP of eQTLs, SNP-level PIP of GWAS (wi
 4. A sorted list of colocalization signals
 5. Potentially some figures to analyze the output 
 6. Log file that displays pipeline steps.
+
+## References:
+1. International HapMap Consotorium. The International HapMap Project. Nature. 2003;426(6968):789-796.
+2. Wojcik, G.L., Graff, M., Nishimura, K.K. et al. Genetic analyses of diverse populations improves discovery for complex traits. Nature. 2019;570:514–518. 
+3.	Wen, X., Lee, Y., Luca, F., Pique-Regi, R. Efficient integrative multi-SNP association analysis using Deterministic Approximation of Posteriors. The American Journal of Human Genetics. 2016 May 26;98(6):1114-1129. 
+4.	Wen X, Pique-Regi R, Luca F. Integrating molecular QTL data into genome-wide genetic association analysis: Probabilistic assessment of enrichment and colocalization. PLoS Genet. 2017;13(3):e1006646. 
+5.	Wen, Xiaoquan. Molecular QTL discovery incorporating genomic annotations using Bayesian false discovery rate control. Ann. Appl. Stat. 10. 2016;no. 3:1619-1638. 
+
