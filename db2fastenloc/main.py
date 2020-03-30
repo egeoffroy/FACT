@@ -55,7 +55,7 @@ if args.geno :
 
 if gwasSS: 
         os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
-        os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD + '--s ' + gwasSS + ' --pop ' + pop + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
+        os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD + ' --sumstats ' + gwasSS + ' --pop ' + pop + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
         os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix + ' ' + pop)
         os.system('bash 09_all1MbSNPs_fastenloc.sh ' + gwas_prefix + ' ' + pop)
         os.system('Rscript 10_get_sig_RCP.R ' + gwas_prefix + ' ' + pop)
