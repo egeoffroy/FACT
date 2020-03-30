@@ -41,7 +41,7 @@ find_beta_se <- function(x){
                         bp <- grep("base_pair_location", names_data)-1
                 }
         }
-        col_list <- c(beta, se, chr, bp, oe, ae)
+        col_list <- c(beta, se, chr, bp, oa, ae)
         return(col_list)
 }
 
