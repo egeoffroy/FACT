@@ -48,7 +48,7 @@ else:
         os.system('mkdir coloc')
 
 command = 'Rscript SNP_list.R ' + gwasSS + ' ' + phenoid
-#result = subprocess.getoutput(command)
+result = subprocess.getoutput(command)
 #print(result)
 if args.meqtl:
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop)) + ' ' + args.meqtl) #currently only for MESA models
