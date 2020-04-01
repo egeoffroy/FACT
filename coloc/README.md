@@ -4,6 +4,29 @@ COLOC (Colocalisation Tests of Two Genetic Traits) is a fine-mapping technique t
 
 However, COLOC does not account for certain biological circumstances. Since it assumes only causal SNP and/or one qualitative trait nucleotide within the locus of interest, it fails to accurately identify when there are multiple causal SNPs like other colocalization and fine-mapping tools. COLOC also predefines the initial prior probability (probability of an event before new data is taken into consideration), making it less precise unless the priors are known beforehand. It lacks the statistical rigor of more recent tools. While this tool may not be the most sophisticated, it is well documented and offers clear explanations and instructions. It claims to be computational quick as it does not use a Markov Chain Monte Carlo approach.
 
+## Software:
+R Libraries
+* coloc
+* dplyr
+* data.table
+
+Python Libraries
+* os
+* subprocess
+* argparse
+
+Clone [this](https://github.com/hakyimlab/summary-gwas-imputation) GitHub repository into this directory. 
+
+
+## Input:
+--pheno_id: Phenotype ID
+--pop: Population ID
+--gwas_SS: GWAS Summary Statistics
+--meqtl: meQTL file
+--frq: .frq file from PLINK
+
+
+
 ## Output: 
 COLOC returns five posterior probabilities (PP) for each of the two SNPs tested. If the third posterior probability (PP3) is large, then they conclude there are two independent causal SNPs associated with each trait. If the PP4 is large, then only a single variant is affecting both traits. If PP0 is large, neither SNP is in association with the trait. 
 
