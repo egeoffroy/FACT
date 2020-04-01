@@ -9,22 +9,46 @@ R Libraries
 * coloc
 * dplyr
 * data.table
+* R.utils
+
 
 Python Libraries
 * os
 * subprocess
 * argparse
+* os.path
 
 Clone [this](https://github.com/hakyimlab/summary-gwas-imputation) GitHub repository into this directory. 
 
 
 ## Input:
 --pheno_id: Phenotype ID
+
 --pop: Population ID
+
 --gwas_SS: GWAS Summary Statistics
+
 --meqtl: meQTL file
+
 --frq: .frq file from PLINK
 
+--filter_by: an optional flag signaling the script to also run the script filter_results.R with the inputted file of significant genes from S-PrediXcan or PrediXcan.
+
+## Run Software:
+
+### Script Description
+SNP_list.R: pull out the SNPs from the GWAS Summary Statistics that were found to be associated with the particular trait. Only run COLOC on these SNPs, not all the SNPs in the eQTL file.
+
+make_coloc_files.R: comverts eQTL and GWAS into the proper COLOC input format. Requires the matrix eQTL file, significant SNPs file, GWAS and eQTL sizes, frq file, and GWAS Summary Statistics file.
+
+filter_results.R: an optional script to filter out the genes that were found to be significant in PrediXcan/S-PrediXcan. Requires the user to use the flag --filter_by.
+
+coloc_pipeline_main.py: main wrapper file for the pipeline.
+
+
+```
+
+```
 
 
 ## Output: 
