@@ -41,13 +41,13 @@ SNP_list.R: pull out the SNPs from the GWAS Summary Statistics that were found t
 
 make_coloc_files.R: comverts eQTL and GWAS into the proper COLOC input format. Requires the matrix eQTL file, significant SNPs file, GWAS and eQTL sizes, frq file, and GWAS Summary Statistics file.
 
-filter_results.R: an optional script to filter out the genes that were found to be significant in PrediXcan/S-PrediXcan. Requires the user to use the flag --filter_by.
+filter_results.R: an optional script to filter out the genes that were found to be significant in PrediXcan/S-PrediXcan. Requires the user to use the flag --filter_by. This file must contain a column called GENE.
 
 coloc_pipeline_main.py: main wrapper file for the pipeline.
 
-
+### Run the Program
 ```
-
+python3 coloc_pipeline_main.py --pheno_id ${pheno} --pop ${pop} --gwas_SS ${gwas} --frq ${frq} --meqtl ${meqtl} --filter_by ${PrediXcan significant hits file}
 ```
 
 
