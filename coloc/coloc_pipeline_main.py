@@ -26,7 +26,7 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-filter_by', '--filter_by',
-                        help='filter by this file of significant genes from S-PrediXcan/PrediXcan output. Requires PROBE_ID column'
+                        help='filter by this file of significant genes from S-PrediXcan/PrediXcan output. Requires GENE column'
                         )
     return parser.parse_args(args)
 
