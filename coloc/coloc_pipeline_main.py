@@ -25,6 +25,9 @@ def check_arg(args=None):
                         help='.frq file',
                         required='True'
                         )
+    parser.add_argument('-filter_by', '--filter_by',
+                        help='filter by this file of significant genes from S-PrediXcan/PrediXcan output. Requires PROBE_ID column'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -49,11 +52,13 @@ else:
 
 command = 'Rscript SNP_list.R ' + gwasSS + ' ' + phenoid
 result = subprocess.getoutput(command)
-#print(result)
+
 if args.meqtl:
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop)) + ' ' + args.meqtl) #currently only for MESA models
 else:
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop))) #currently only for MESA models
 
-
 os.system('bash /home/elyse/coloc/run_pipeline_1.sh ' + pop + ' ' + phenoid + ' ' + str(populations.get(pop)))
+
+if args.filter_by:
+    os.system('Rscript filter_results.R ' + phenoid + ' ' + pop + ' ' + args.filter_by)
