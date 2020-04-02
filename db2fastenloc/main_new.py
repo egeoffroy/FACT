@@ -45,6 +45,12 @@ def check_arg(args=None):
                         help='prefixes for GWAS Summary Statistics reformatted file',
                         required='True'
                         )
+    #check this with Elyse
+    #need to determine where to place if statement
+    parser.add_argument('-chr','--chr_num',
+                        help='Chromosome number being tested in pipeline',
+                        required='False'
+                        )
     return parser.parse_args(args)
 
 def main():
@@ -72,7 +78,7 @@ def main():
         subprocess.run(out_cmd, shell=True)
 
         #change logger info here
-        logging.info("Running ")
+        logging.info("Converting mEQTL file to .dat files")
         run_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --pheno {} --genemap {} --pop {} --outdir {}_all1Mb_sbams'.format(geno_folder, phenofile, genemapfile, pop, pop)
         subprocess.run(run_cmd, shell=True)
 
