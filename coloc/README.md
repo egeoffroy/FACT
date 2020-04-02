@@ -26,7 +26,7 @@ Clone [this](https://github.com/hakyimlab/summary-gwas-imputation) GitHub reposi
 
 --pop: Population ID
 
---gwas_SS: GWAS Summary Statistics
+--gwas_SS: harmonised GWAS Summary Statistics*
 
 --meqtl: meQTL file
 
@@ -41,6 +41,9 @@ This program works for six different populations--the five MESA populations and 
 * HIS
 * CAU
 * YRI
+
+
+*It is required that the GWAS Summary Statistics are the new harmonised versions as these only include the SNPs found to be significant in the original study and have standard column names. 
 
 ## Run Software:
 
