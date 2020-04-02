@@ -7,10 +7,10 @@ import argparse
 
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Run fastenloc or coloc for various GWAS SS')
-    parser.add_argument('--coloc',
+    parser.add_argument('--coloc',action="store_true", dest="coloc", default=False,
                         help='input test type'
                         )
-    parser.add_argument('-fastenloc', '--fastenloc',
+    parser.add_argument('-fastenloc', '--fastenloc', action="store_true", dest="fastenloc", default=False,
                         help='input test type'
                         )
     parser.add_argument('-pid', '--pheno_id',
