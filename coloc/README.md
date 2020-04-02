@@ -44,10 +44,6 @@ This program works for six different populations--the five MESA populations and 
 
 ## Run Software:
 
-```
-python3 ./coloc_pipeline_main.py --pop --pheno_id --gwas_SS --[--meqtl]
-
-```
 
 ### Script Description
 SNP_list.R: pull out the SNPs from the GWAS Summary Statistics that were found to be associated with the particular trait. Only run COLOC on these SNPs, not all the SNPs in the eQTL file.
@@ -61,6 +57,7 @@ coloc_pipeline_main.py: main wrapper file for the pipeline.
 ### Run the Program
 ```
 python3 coloc_pipeline_main.py --pheno_id ${pheno} --pop ${pop} --gwas_SS ${gwas} --frq ${frq} --meqtl ${meqtl} --filter_by ${PrediXcan significant hits file}
+
 ```
 
 
