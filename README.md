@@ -12,11 +12,14 @@
 #### - R 
                 - dplyr
                 - data.table
+                - coloc
+                - R.utils
                 
 ## Software Required:
 #### - DAP-G: https://github.com/xqwen/dap
 #### - TORUS: https://github.com/xqwen/torus
 #### - FASTENLOC: https://github.com/xqwen/fastenloc
+#### - Summary GWAS Imputation: https://github.com/hakyimlab/summary-gwas-imputation/
 
 ## Install Software
 
@@ -52,6 +55,12 @@ cd fastenloc/src
 make
 ```
 
+### - Summary GWAS Imputation
+
+```
+git clone https://github.com/hakyimlab/summary-gwas-imputation.git
+```
+
 
 ## Tutorial:
 Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
@@ -72,6 +81,10 @@ ________________________________________________________________________________
 3. coloc_pipeline_main.py : 
 
 ## COLOC Output:
+1. output_pop_pheno.txt.gz: COLOC output. A file with the probabilites for each of the five hypotheses for each gene.
+2. sig_genes_coloc_pop_pheno.csv: The filtered COLOC output file by only looking at the genes found significant by the TWAS Method.
+
+
 
 
 ____________________________________________________________________________________________________________________________________
