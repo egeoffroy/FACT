@@ -56,14 +56,35 @@ make
 ## Tutorial:
 Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
 
-## Input: 
-* --geno : Gene Expression Prediction matrix eQTL folder
+____________________________________________________________________________________________________________________________________
+
+## COLOC Input:
+* --gwas_SS : GWAS Summary Statistics file
+* --frq : .frq PLINK file
+* --meqtl : Matrix eQTL Gene expression file (optional)
+* --filter_by : file of significant S-PrediXcan/PrediXcan results
+* --pop : population id
+* --pheno_id : phenotype id
+
+## COLOC Scripts:
+1. SNP_lists.R : script that takes all of the GWAS Summary Statistics SNPs and writes them out to a separate file to only use those SNPs later.
+2. make_coloc_files.R : formats Matrix eQTL and GWAS Summary Statistics data into the proper COLOC input. Also requires the output from SNP_lists.R and the .frq file.
+3. coloc_pipeline_main.py : 
+
+## COLOC Output:
+
+
+____________________________________________________________________________________________________________________________________
+## FASTENLOC Input: 
+* --geno : Folder path to genotype and genotype annotation data
 * --LD : Linkage Disequilibrium annotation file 
 * --genemap : Gene Annotation file
 * --gwas_SS : GWAS Summary Statistics file
-* --gwas_n : n: the number of individuals in the model
+* --pheno : Matrix eQTL gene expression file
+* --pop : population id
+* --gwas_out_prefixes : prefixes for GWAS phenotypes
 
-## Scripts
+## FASTENLOC Scripts
 1. Convert mEQTL file to .dat files → file for every gene
 2. Run DAP-G with each dat file
 3. Run TORUS with eQTL data
@@ -73,10 +94,10 @@ Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki).
 7. Identify important columns in GWAS Summary Statistics file. Transform GWAS SS file to include z-scores and label LD blocks using LD annotation file and fastenloc annotation file.
 8. Run torus with GWAS SS data
 9. Run fastenloc with GWAS SS data
-10. Identify significant genes with RCP > 0.5
+10. Identify top 10 genes based on RCP value.
 
 
-## Output:
+## FASTENLOC Output:
 1. Enrichment analysis result: estimated enrichment parameters and standard errors.
 2. Signal-level colocalization result: the main output from the colocalization analysis with the following columns
 signal cluster name (from eQTL analysis), number of member SNPs, cluster PIP of eQTLs, cluster PIP of GWAS hits (without eQTL prior), cluster PIP of GWAS hits (with eQTL prior), regional colocalization probability (RCP)
@@ -92,4 +113,5 @@ signal cluster name, SNP name, SNP-level PIP of eQTLs, SNP-level PIP of GWAS (wi
 3.	Wen, X., Lee, Y., Luca, F., Pique-Regi, R. Efficient integrative multi-SNP association analysis using Deterministic Approximation of Posteriors. The American Journal of Human Genetics. 2016 May 26;98(6):1114-1129. 
 4.	Wen X, Pique-Regi R, Luca F. Integrating molecular QTL data into genome-wide genetic association analysis: Probabilistic assessment of enrichment and colocalization. PLoS Genet. 2017;13(3):e1006646. 
 5.	Wen, Xiaoquan. Molecular QTL discovery incorporating genomic annotations using Bayesian false discovery rate control. Ann. Appl. Stat. 10. 2016;no. 3:1619-1638. 
+6. Giambartolomei C, Vukcevic D, Schadt EE, Franke L, Hingorani AD, Wallace C, et al. Bayesian test for colocalisation between pairs of genetic association studies using summary statistics. PLoS Genet. 2014;10(5):e1004383. 
 
