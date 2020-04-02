@@ -58,13 +58,15 @@ def check_arg(args=None):
 args = check_arg(sys.argv[1:])
 
 if args.coloc:
+    os.system('cd coloc/')
     if args.meqtl: 
-            os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl)
+            os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl)
             if args.filter_by:
-                os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by + ' --meqtl ' + args.meqtl)
+                os.system('python3 .coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by + ' --meqtl ' + args.meqtl)
     if args.filter_by:
-            os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by)
-    os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
+            os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by)
+    os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
 
 if args.fastenloc: 
-    os.system('python3 ./db2fastenloc/main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --gwas_out_prefixes '+ args.gwas_out_prefixes)
+    os.system('cd db2fastenloc/')
+    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --gwas_out_prefixes '+ args.gwas_out_prefixes)
