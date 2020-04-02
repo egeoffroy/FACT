@@ -7,7 +7,7 @@ import argparse
 
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Run fastenloc or coloc for various GWAS SS')
-    parser.add_argument('-coloc', '--coloc',
+    parser.add_argument('--coloc',
                         help='input test type'
                         )
     parser.add_argument('-fastenloc', '--fastenloc',
@@ -29,8 +29,7 @@ def check_arg(args=None):
                         help='meQTL file'
                         )
     parser.add_argument('-frq', '--frq',
-                        help='.frq file',
-                        required='True'
+                        help='.frq file'
                         )
     parser.add_argument('-filter_by', '--filter_by',
                         help='filter by this file of significant genes from S-PrediXcan/PrediXcan output. Requires gene column'
@@ -45,12 +44,10 @@ def check_arg(args=None):
                         help='gene position map'
                         )
     parser.add_argument('-LD', '--LD',
-                        help='LD blocks locus file',
-                        required='True'
+                        help='LD blocks locus file'
                         )
     parser.add_argument('-gwas_out_prefixes', '--gwas_out_prefixes',
-                        help='prefixes for GWAS Summary Statistics reformatted file',
-                        required='True'
+                        help='prefixes for GWAS Summary Statistics reformatted file'
                         )
     return parser.parse_args(args)
 
@@ -58,7 +55,7 @@ def check_arg(args=None):
 args = check_arg(sys.argv[1:])
 
 if args.coloc:
-    os.system('cd coloc/')
+    os.chdir('./coloc')
     if args.meqtl: 
             os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl)
             if args.filter_by:
