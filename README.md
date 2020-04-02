@@ -55,7 +55,7 @@ cd fastenloc/src
 make
 ```
 
-### - Summary GWAS Imputation
+### Summary GWAS Imputation
 
 ```
 git clone https://github.com/hakyimlab/summary-gwas-imputation.git
