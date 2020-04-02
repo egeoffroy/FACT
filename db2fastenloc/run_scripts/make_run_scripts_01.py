@@ -28,6 +28,10 @@ def check_arg(args=None):
                         help='output .dat file directory',
                         required='True'
                         )
+    parser.add_argument('-chr', '--chr',
+                        help='chromosome range', default=[21, 22],
+                        required='True'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -37,11 +41,12 @@ phenofile = args.pheno
 genemapfile = args.genemap
 outdir = args.outdir
 pop = args.pop
-
+start = args.chr[0]
+stop = args.chr[1]
 qsubfile = open('../nohup_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
-for i in range(1,23):
+for i in range(start,stop):
     newi = str(i)
     outfilename = 'run_scripts/run_' + prescript + '_' + newi + '.sh'
     outfile = open(outfilename,'w')
