@@ -49,6 +49,10 @@ def check_arg(args=None):
     parser.add_argument('-gwas_out_prefixes', '--gwas_out_prefixes',
                         help='prefixes for GWAS Summary Statistics reformatted file'
                         )
+    parser.add_argument('-chr', '--chr',
+                        help='chromosome range', default=[22, 23],
+                        required='False'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -66,4 +70,4 @@ if args.coloc:
 
 if args.fastenloc: 
     os.system('cd db2fastenloc/')
-    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --gwas_out_prefixes '+ args.gwas_out_prefixes)
+    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --chr ' + args.chr + ' --gwas_out_prefixes '+ args.gwas_out_prefixes)
