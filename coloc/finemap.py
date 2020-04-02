@@ -50,3 +50,4 @@ if args.coloc:
     os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
 
 #if args.fastenloc: 
+#os.system('python3 main.py --geno ' + genotype_folder + ' --pheno ' + meqtl_file + ' --genemap ' + genemap_file + ' --pop ' + population_id+ ' --gwas_SS ' + GWAS_SS_file +' --LD ' + LD_annotation_file+' --gwas_out_prefixes '+ GWAS_Prefix)
