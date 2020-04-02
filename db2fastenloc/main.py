@@ -29,6 +29,10 @@ def check_arg(args=None):
                         help='prefixes for GWAS Summary Statistics reformatted file',
                         required='True'
                         )
+    parser.add_argument('-chr', '--chr',
+                        help='chromosome range', default=[22, 23],
+                        required='False'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -43,7 +47,7 @@ if args.geno :
     phenofile = args.pheno
     genemapfile = args.genemap
     os.system('mkdir ' + pop + '_all1Mb_sbams')
-    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams')
+    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --chr ' + args.chr )
     #work on timing between steps to prevent the program from going over steps before files are ready
     os.system('bash nohup_01.txt')
     os.system('bash run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop)
