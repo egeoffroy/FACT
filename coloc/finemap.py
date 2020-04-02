@@ -35,6 +35,23 @@ def check_arg(args=None):
     parser.add_argument('-filter_by', '--filter_by',
                         help='filter by this file of significant genes from S-PrediXcan/PrediXcan output. Requires gene column'
                         )
+    parser.add_argument('-g', '--geno',
+                        help='input genotype folder'
+                        )
+    parser.add_argument('-p', '--pheno',
+                        help='input phenotype file'
+                        )
+    parser.add_argument('-m', '--genemap',
+                        help='gene position map'
+                        )
+    parser.add_argument('-LD', '--LD',
+                        help='LD blocks locus file',
+                        required='True'
+                        )
+    parser.add_argument('-gwas_out_prefixes', '--gwas_out_prefixes',
+                        help='prefixes for GWAS Summary Statistics reformatted file',
+                        required='True'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -49,5 +66,5 @@ if args.coloc:
             os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by)
     os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
 
-#if args.fastenloc: 
-#os.system('python3 main.py --geno ' + genotype_folder + ' --pheno ' + meqtl_file + ' --genemap ' + genemap_file + ' --pop ' + population_id+ ' --gwas_SS ' + GWAS_SS_file +' --LD ' + LD_annotation_file+' --gwas_out_prefixes '+ GWAS_Prefix)
+if args.fastenloc: 
+    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --gwas_out_prefixes '+ args.gwas_out_prefixes)
