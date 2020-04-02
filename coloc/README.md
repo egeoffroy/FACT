@@ -34,7 +34,20 @@ Clone [this](https://github.com/hakyimlab/summary-gwas-imputation) GitHub reposi
 
 --filter_by: an optional flag signaling the script to also run the script filter_results.R with the inputted file of significant genes from S-PrediXcan or PrediXcan.
 
+This program works for six different populations--the five MESA populations and the International HapMap Project's Yoruban population.
+* ALL
+* AFHI
+* AFA
+* HIS
+* CAU
+* YRI
+
 ## Run Software:
+
+```
+python3 ./coloc_pipeline_main.py --pop --pheno_id --gwas_SS --[--meqtl]
+
+```
 
 ### Script Description
 SNP_list.R: pull out the SNPs from the GWAS Summary Statistics that were found to be associated with the particular trait. Only run COLOC on these SNPs, not all the SNPs in the eQTL file.
