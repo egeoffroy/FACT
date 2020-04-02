@@ -29,7 +29,7 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', default=[21, 22],
+                        help='chromosome range', default=[22, 23],
                         required='True'
                         )
     return parser.parse_args(args)
