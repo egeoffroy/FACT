@@ -67,4 +67,4 @@ if args.coloc:
     os.system('python3 ./coloc/coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
 
 if args.fastenloc: 
-    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --gwas_out_prefixes '+ args.gwas_out_prefixes)
+    os.system('python3 ./db2fastenloc/main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --gwas_out_prefixes '+ args.gwas_out_prefixes)
