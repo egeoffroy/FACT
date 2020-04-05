@@ -47,8 +47,8 @@ def check_arg(args=None):
                         )
     #check this with Elyse
     #need to determine where to place if statement
-    parser.add_argument('-chr','--chr_num',
-                        help='Chromosome number being tested in pipeline',
+    parser.add_argument('-chr','--chr',
+                        help='Chromosome number (range) being tested in pipeline',
                         required='False'
                         )
     return parser.parse_args(args)
@@ -66,6 +66,9 @@ def main():
     gwasSS = args.gwas_SS
     LD = args.LD
     gwas_prefix = args.gwas_out_prefixes
+    ch_chr = args.chr
+    chosen_chr = "Chromosome range being tested in pipeline is {}".format(ch_chr)
+    logging.info(chosen_chr)
     
     if args.geno:
         
