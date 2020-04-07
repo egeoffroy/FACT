@@ -41,16 +41,18 @@ pop = args.pop
 gwasSS = args.gwas_SS
 LD = args.LD
 gwas_prefix = args.gwas_out_prefixes
+start = args.chr[0]
+stop = args.chr[1]
 
 if args.geno :
     geno_folder = args.geno
     phenofile = args.pheno
     genemapfile = args.genemap
     os.system('mkdir ' + pop + '_all1Mb_sbams')
-    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + args.chr[0] + ' --stop ' + args.chr[1])
+    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + start)
     #work on timing between steps to prevent the program from going over steps before files are ready
     os.system('bash nohup_01.txt')
-    os.system('at now + 7 hours')
+    #os.system('at now + 7 hours')
     os.system('bash run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop)
     os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
     os.system('bash 03_all1MbSNPs_torus.sh ' + geno_folder + ' ' + genemapfile + ' ' + pop)
