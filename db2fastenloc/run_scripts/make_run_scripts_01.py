@@ -46,7 +46,7 @@ stop = args.chr[1]
 qsubfile = open('../nohup_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
-for i in range(start+1,stop+1):
+for i in range(start,stop):
     #write range into logger
     newi = str(i)
     outfilename = 'run_scripts/run_' + prescript + '_' + newi + '.sh'
