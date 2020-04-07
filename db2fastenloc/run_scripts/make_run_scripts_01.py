@@ -68,4 +68,4 @@ for i in range(start,stop):
     outfile.write(output)
     outfile.write('python3 01_all1MbSNPs2dat.py -g '+ genofile + pop +'_' + newi + '_snp.txt -p '+phenofile +' -m '+genemapfile+' -b '+ pop+ ' -o ' + outdir +'/\n')
 
-    qsubfile.write('bash run_scripts/' + outfilename + '\nsleep 3\n')
+    qsubfile.write('bash ' + outfilename + '\nsleep 3\n')
