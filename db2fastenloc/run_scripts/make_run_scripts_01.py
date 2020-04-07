@@ -29,11 +29,11 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-start', '--start',
-                        help='chromosome range start', nargs='+', default=21,
+                        help='chromosome range start',  default=21,
                         required='False'
                         )
     parser.add_argument('-stop', '--stop',
-                        help='chromosome range stop', nargs='+', default=22,
+                        help='chromosome range stop', default=22,
                         required='False'
                         )
     return parser.parse_args(args)
@@ -45,8 +45,8 @@ phenofile = args.pheno
 genemapfile = args.genemap
 outdir = args.outdir
 pop = args.pop
-start = args.start
-stop = args.stop
+start = int(args.start)
+stop = int(args.stop)
 qsubfile = open('../nohup_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
