@@ -29,7 +29,7 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', default=[22, 23],
+                        help='chromosome range', default=[21, 22],
                         required='False'
                         )
     return parser.parse_args(args)
@@ -46,7 +46,7 @@ stop = args.chr[1]
 qsubfile = open('../nohup_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
-for i in range(start,stop):
+for i in range(start+1,stop+1):
     #write range into logger
     newi = str(i)
     outfilename = 'run_scripts/run_' + prescript + '_' + newi + '.sh'
