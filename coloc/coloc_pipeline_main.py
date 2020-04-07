@@ -58,7 +58,7 @@ if args.meqtl:
 else:
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop))) #currently only for MESA models
 
-os.system('bash run_pipeline_1.sh ' + pop + ' ' + phenoid + ' ' + str(populations.get(pop)))
+os.system('bash run_pipeline.sh ' + pop + ' ' + phenoid + ' ' + str(populations.get(pop)))
 
 if args.filter_by:
     os.system('Rscript filter_results.R ' + phenoid + ' ' + pop + ' ' + args.filter_by)
