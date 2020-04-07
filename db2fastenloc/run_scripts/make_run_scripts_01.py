@@ -28,8 +28,12 @@ def check_arg(args=None):
                         help='output .dat file directory',
                         required='True'
                         )
-    parser.add_argument('-chr', '--chr',
-                        help='chromosome range', nargs='+', default=[21, 22],
+    parser.add_argument('-start', '--start',
+                        help='chromosome range start', nargs='+', default=21,
+                        required='False'
+                        )
+    parser.add_argument('-stop', '--stop',
+                        help='chromosome range stop', nargs='+', default=22,
                         required='False'
                         )
     return parser.parse_args(args)
@@ -41,8 +45,8 @@ phenofile = args.pheno
 genemapfile = args.genemap
 outdir = args.outdir
 pop = args.pop
-start = args.chr[0]
-stop = args.chr[1]
+start = args.start
+stop = args.stop
 qsubfile = open('../nohup_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
