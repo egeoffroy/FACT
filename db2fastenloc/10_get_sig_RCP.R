@@ -1,5 +1,6 @@
 library(dplyr)
 library(data.table)
+library(R.utils)
 
 args = commandArgs(trailingOnly=TRUE)
 prefix = args[1]
