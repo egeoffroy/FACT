@@ -2,6 +2,8 @@
 #Find beta and SE columns in each GWAS Summary Statistics file
 library(data.table)
 library(dplyr)
+library(R.utils)
+
 
 args = commandArgs(trailingOnly=TRUE)
 find_beta_se <- function(x){
