@@ -73,4 +73,4 @@ if args.fastenloc: # This is currently broken because of the chromosome thing...
     if args.chr:
          start = args.chr[0]
          stop = args.chr[1]
-    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --chr ' + args.chr + ' --gwas_out_prefixes '+ args.gwas_out_prefixes)
+    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --start ' + start + ' --stop ' + stop ' --gwas_out_prefixes '+ args.gwas_out_prefixes)
