@@ -50,7 +50,7 @@ def check_arg(args=None):
                         help='prefixes for GWAS Summary Statistics reformatted file'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', default=[22, 23],
+                        help='chromosome range', default=[1, 22],
                         required='False'
                         )
     return parser.parse_args(args)
@@ -68,6 +68,9 @@ if args.coloc:
             os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by)
     os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
 
-if args.fastenloc: 
+if args.fastenloc: # This is currently broken because of the chromosome thing... will have to fix
     os.system('cd db2fastenloc/')
+    if args.chr:
+         start = args.chr[0]
+         stop = args.chr[1]
     os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --chr ' + args.chr + ' --gwas_out_prefixes '+ args.gwas_out_prefixes)
