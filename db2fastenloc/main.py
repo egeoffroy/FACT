@@ -33,6 +33,14 @@ def check_arg(args=None):
                         help='chromosome range', nargs='+', default=[21, 22],
                         required='False'
                         )
+    parser.add_argument('-start', '--start',
+                        help='chromosome range start',  default=21,
+                        required='False'
+                        )
+    parser.add_argument('-stop', '--stop',
+                        help='chromosome range stop', default=22,
+                        required='False'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -41,9 +49,13 @@ pop = args.pop
 gwasSS = args.gwas_SS
 LD = args.LD
 gwas_prefix = args.gwas_out_prefixes
-start = args.chr[0]
-stop = args.chr[1]
-
+if args.chr:
+    start = args.chr[0]
+    stop = args.chr[1]
+else:
+    start = args.start
+    stop = args.stop
+    
 if args.geno :
     geno_folder = args.geno
     phenofile = args.pheno
