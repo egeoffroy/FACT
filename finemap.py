@@ -50,8 +50,7 @@ def check_arg(args=None):
                         help='prefixes for GWAS Summary Statistics reformatted file'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', default=[1, 22],
-                        required='False'
+                        help='chromosome range', default=[1, 22]
                         )
     return parser.parse_args(args)
 
