@@ -97,6 +97,7 @@ ________________________________________________________________________________
 * --pheno : Matrix eQTL gene expression file
 * --pop : population id
 * --gwas_out_prefixes : prefixes for GWAS phenotypes
+* --chr : a range of chromosome numbers. The default is chromsomes 21 and 22. 
 
 ## FASTENLOC Scripts
 1. Convert mEQTL file to .dat files → file for every gene
