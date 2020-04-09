@@ -60,7 +60,7 @@ make
 ```
 git clone https://github.com/hakyimlab/summary-gwas-imputation.git
 ```
-
+Clone this into the [coloc](https://github.com/egeoffroy/Fine-mapping_Pipeline/coloc) directory. 
 
 ## Tutorial:
 Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
@@ -78,7 +78,8 @@ ________________________________________________________________________________
 ## COLOC Scripts:
 1. SNP_lists.R : script that takes all of the GWAS Summary Statistics SNPs and writes them out to a separate file to only use those SNPs later.
 2. make_coloc_files.R : formats Matrix eQTL and GWAS Summary Statistics data into the proper COLOC input. Also requires the output from SNP_lists.R and the .frq file.
-3. coloc_pipeline_main.py : 
+3. coloc_pipeline_main.py : main pipeline wrapper that ties together the other scripts. 
+4. run_pipeline_1.sh: calls the pipeline developed by the Im Lab at UChicago to run COLOC with the properly formatted files.
 
 ## COLOC Output:
 1. output_pop_pheno.txt.gz: COLOC output. A file with the probabilites for each of the five hypotheses for each gene.
