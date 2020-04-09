@@ -11,7 +11,7 @@ frqfile <- args[2]
 phenos <- args[3]
 pop <- args[4]
 pop_sample_size <- args[5]
-print('Population Size: ' pop_sample_size)
+#print('Population Size: ' pop_sample_size)
 meqtlfile <- args[6]
 
 chrs <- c(1:22)
