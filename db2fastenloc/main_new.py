@@ -25,14 +25,6 @@ def check_arg(args=None):
                         help='group/pop id for group_id column of .dat file',
                         required='True'
                         )
-    parser.add_argument('-dat', '--out_dat_dir',
-                        help='output .dat file directory',
-                        required='True'
-                        )
-    parser.add_argument('-n', '--gwas_n', default=1,
-                        help='Number of GWAS Summary Statistics Files With Same Format',
-                        required='True'
-                        )
     parser.add_argument('-gwas', '--gwas_SS',
                         help='GWAS Summary Statistics File',
                         required='True'
@@ -45,10 +37,16 @@ def check_arg(args=None):
                         help='prefixes for GWAS Summary Statistics reformatted file',
                         required='True'
                         )
-    #check this with Elyse
-    #need to determine where to place if statement
     parser.add_argument('-chr','--chr',
                         help='Chromosome number (range) being tested in pipeline',
+                        required='False'
+                        )
+    parser.add_argument('-start','--start',
+                        help='Chromosome range start', default=21,
+                        required='False'
+                        )
+    parser.add_argument('-stop','--stop',
+                        help='Chromosome range stop', default=22,
                         required='False'
                         )
     return parser.parse_args(args)
@@ -57,20 +55,27 @@ def main():
 #retrieve command line arguments\
     logging.info("Beginning to run wrapper.")
     args = check_arg(sys.argv[1:])
-    geno_folder = args.geno
-    phenofile = args.pheno
-    genemapfile = args.genemap
-    outdir = args.out_dat_dir
     pop = args.pop
-    gwas_n = args.gwas_n #This may not be needed
     gwasSS = args.gwas_SS
     LD = args.LD
     gwas_prefix = args.gwas_out_prefixes
-    ch_chr = args.chr
-    chosen_chr = "Chromosome range being tested in pipeline is {}".format(ch_chr)
-    logging.info(chosen_chr)
+    
+    if args.chr:
+        start = args.chr[0]
+        stop = args.chr[1]
+        chosen_chr = "Chromosome range being tested in pipeline is {} to {}".format(start,stop)
+        logging.info(chosen_chr)
+    else: 
+        start=args.start
+        stop=args.stop
+        chosen_chr = "Chromosome range being tested in pipeline is {} to {}".format(start,stop)
+        logging.info(chosen_chr)
     
     if args.geno:
+        #name argument variables
+        geno_folder = args.geno
+        phenofile = args.pheno
+        genemapfile = args.genemap
         
         logging.info("Making directory")
         mkdir_cmd = 'mkdir {}_all1Mb_sbams'.format(pop)
