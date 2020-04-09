@@ -60,7 +60,7 @@ make
 ```
 git clone https://github.com/hakyimlab/summary-gwas-imputation.git
 ```
-Clone this into the [coloc](https://github.com/egeoffroy/Fine-mapping_Pipeline/coloc) directory. 
+Clone this into the [coloc](https://github.com/egeoffroy/Fine-mapping_Pipeline/tree/master/coloc) directory. 
 
 ## Tutorial:
 Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
