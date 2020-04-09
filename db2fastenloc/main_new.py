@@ -60,6 +60,7 @@ def main():
     LD = args.LD
     gwas_prefix = args.gwas_out_prefixes
     
+    #determine chromosome range 
     if args.chr:
         start = args.chr[0]
         stop = args.chr[1]
@@ -136,6 +137,7 @@ def main():
         subprocess.run(torush_cmd)
         fastlc_cmd =  'bash 09_all1MbSNPs_fastenloc.sh {} {}'.format(gwas_prefix[i],pop)
         subprocess.run(fastlc_cmd)
+        #add run significant hits here
 
 if __name__ == '__main__':
     logger = logging.getLogger(__name__)
