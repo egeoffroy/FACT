@@ -54,7 +54,7 @@ def check_arg(args=None):
 def main():
 #retrieve command line arguments\
     logging.info("Beginning to run wrapper.")
-    args = check_arg(sys.argv[1:])
+    args = arg_parser()
     logging.info(args)
     pop = args.pop
     gwasSS = args.gwas_SS
