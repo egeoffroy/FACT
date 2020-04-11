@@ -37,8 +37,8 @@ def check_arg(args=None):
                         help='prefixes for GWAS Summary Statistics reformatted file',
                         required='True'
                         )
-    parser.add_argument('-chr','--chr',
-                        help='Chromosome number (range) being tested in pipeline',
+    parser.add_argument('-chr','--chr', 
+                        help='Chromosome number (range) being tested in pipeline', nargs='+', default=[21, 22],
                         required='False'
                         )
     parser.add_argument('-start','--start',
