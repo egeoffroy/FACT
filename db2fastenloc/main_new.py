@@ -82,9 +82,9 @@ def main():
         mkdir_cmd = 'mkdir {}_all1Mb_sbams'.format(pop)
         subprocess.run(mkdir_cmd, shell=True)
 
-        logging.info("Making output directory")
-        out_cmd = 'mkdir {}_all1Mb_scan_out'.format(pop)
-        subprocess.run(out_cmd, shell=True)
+       # logging.info("Making output directory")
+       # out_cmd = 'mkdir {}_all1Mb_scan_out'.format(pop)
+       # subprocess.run(out_cmd, shell=True)
 
         #change logger info here
         logging.info("Converting mEQTL file to .dat files")
@@ -96,21 +96,16 @@ def main():
         nohup_cmd = 'bash nohup_01.txt'
         subprocess.run(nohup_cmd, shell=True)
 
-        logging.info('Running Batch Scan')
-        batch_cmd = 'python3 02_all1MbSNPs_batch_scan.py --pop {}'.format(pop)
-        subprocess.run(batch_cmd, shell=True)
-
         logging.info("Run nohup batch scan ")
-        batch2_cmd = 'run_scripts/run_02_all1MbSNPs_batch_scan.sh {} &'.format(pop)
+        batch2_cmd = 'bash run_scripts/run_02_all1MbSNPs_batch_scan.sh {} &'.format(pop)
         subprocess.run('batch2_cmd, shell=True')
 
         #add logger info
-        logging.info("")
+        logging.info("Concat batch scan output files- Script 2B")
         concat_cmd = 'python3 02b_concat_scan_out_bf_files.py --pop {}'.format(pop)
         subprocess.run(concat_cmd, shell=True)
 
-
-        logging.info("Running Torus shell script")
+        logging.info("Running Torus")
         torus_cmd = 'bash 03_all1MbSNPs_torus.sh {} {} {}'.format(geno_folder,genemapfile,pop)
         subprocess.run('torus_cmd, shell=True')
 
@@ -122,21 +117,27 @@ def main():
         vcf_cmd = 'bash run_/run_05_make_vcf.py {} {}'.format(geno_folder,pop)
         subprocess.run(vcf_cmd, shell=True)
 
-        logging.info("Running fastenloc shell script")
+        logging.info("Running make fastenloc annotation files")
         fnc_cmd = 'bash 06_all1MbSNPs_make_fastenloc_anot.sh {}'.format(pop)
         subprocess.run(fnc_cmd, shell=True) #Run script 06
     
     if gwasSS:
         ##can add logger here too
         ##flag here to tell which chromosome to look at? 
+        logging.info("Running Summary Stats R Program")
         r_cmd = 'Rscript 07a_sumstats_names.R {}'.format(gwasSS)
         subprocess.run(r_cmd)
-        dblocks_cmd = 'python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks {} --s {} --pop {} --annot {}_all1Mb_fastenloc.eqtl.annotation.vcf.gz --outprefix {}'.format(LD, gwasSS[i], pop, pop, gwas_prefix[i])
+        dblocks_cmd = 'python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks {} --s {} --pop {} --annot {}_all1Mb_fastenloc.eqtl.annotation.vcf.gz --outprefix {}'.format(LD, gwasSS, pop, pop, gwas_prefix)
         subprocess.run(dblocks_cmd)
-        torush_cmd = 'bash 08_gwas_zval_torus.sh {} {}'.format(gwas_prefix[i],pop)
+        logging.info("Running TORUS, gwas zval")
+        torush_cmd = 'bash 08_gwas_zval_torus.sh {} {}'.format(gwas_prefix,pop)
         subprocess.run(torush_cmd)
-        fastlc_cmd =  'bash 09_all1MbSNPs_fastenloc.sh {} {}'.format(gwas_prefix[i],pop)
+        logging.info("Running Fastenloc")
+        fastlc_cmd =  'bash 09_all1MbSNPs_fastenloc.sh {} {}'.format(gwas_prefix,pop)
         subprocess.run(fastlc_cmd)
+        logging.info("Getting Significant Hits")
+        sig_hits = 'Rscript 10_get_sig_RCP.R {} {}'.format(gwas_prefix, pop)
+        subprocess.run(sig_hits)
         #add run significant hits here
 
 if __name__ == '__main__':
