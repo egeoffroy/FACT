@@ -37,17 +37,14 @@ def check_arg(args=None):
     parser.add_argument('-g', '--geno',
                         help='input genotype folder'
                         )
-    parser.add_argument('-p', '--pheno',
-                        help='input phenotype file'
-                        )
+    #parser.add_argument('-p', '--pheno',
+    #                    help='input phenotype file'
+    #                    )
     parser.add_argument('-m', '--genemap',
                         help='gene position map'
                         )
     parser.add_argument('-LD', '--LD',
                         help='LD blocks locus file'
-                        )
-    parser.add_argument('-gwas_out_prefixes', '--gwas_out_prefixes',
-                        help='prefixes for GWAS Summary Statistics reformatted file'
                         )
     parser.add_argument('-chr', '--chr',
                         help='chromosome range', default=[1, 22]
@@ -72,4 +69,4 @@ if args.fastenloc: # This is currently broken because of the chromosome thing...
     if args.chr:
          start = args.chr[0]
          stop = args.chr[1]
-    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.pheno + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --start ' + start + ' --stop ' + stop + ' --gwas_out_prefixes '+ args.gwas_out_prefixes)
+    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.meqtl + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --start ' + start + ' --stop ' + stop + ' --gwas_out_prefixes '+ args.pheno_id)
