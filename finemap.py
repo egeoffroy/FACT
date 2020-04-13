@@ -2,8 +2,10 @@
 
 import os
 import sys
-import subprocess
 import argparse 
+import shlex
+import subprocess
+import logging
 
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Run fastenloc or coloc for various GWAS SS')
@@ -62,7 +64,7 @@ if args.coloc:
     os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
 
 if args.fastenloc: # This is currently broken because of the chromosome thing... will have to fix
-    os.system('cd db2fastenloc/')
+    os.chdir('./db2fastenloc')
     if args.chr:
          start = args.chr[0]
          stop = args.chr[1]
