@@ -72,7 +72,7 @@ if args.geno :
     logging.info("Making directory for all 1Mb sbams")
     os.system('mkdir ' + pop + '_all1Mb_sbams')
     logging.info("Make Run Scripts")
-    make_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --meqt1 {} --genemap {} --pop {} --outdir {}_all1MBsbams --start {} --stop {}'.format(geno_folder, phenofile, genemapfile, pop, pop, start, stop)
+    make_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --meqtl {} --genemap {} --pop {} --outdir {}_all1MBsbams --start {} --stop {}'.format(geno_folder, phenofile, genemapfile, pop, pop, start, stop)
     os.system(make_cmd)
     #os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + stop)
     #work on timing between steps to prevent the program from going over steps before files are ready
@@ -90,7 +90,7 @@ if args.geno :
 if gwasSS: 
         logging.info('Running summary stats')
         os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
-        os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD + ' --sumstats ' + gwasSS + ' --pop ' + pop + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
+        os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD_block + ' --sumstats ' + gwasSS + ' --pop ' + pop + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
         logging.info('Running TORUS on gwas SS')
         os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix + ' ' + pop)
         logging.info('Running fastenloc')
