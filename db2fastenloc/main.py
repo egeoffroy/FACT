@@ -83,14 +83,14 @@ if args.geno :
     logging.info('Running TORUS')
     os.system('bash 03_all1MbSNPs_torus.sh ' + geno_folder + ' ' + genemapfile + ' ' + pop)
     os.system('bash run_scripts/run_04_all1MbSNPs_batch_dapg.sh ' + pop)
-    os.system('bash run_scripts/run_05_make_vcf.py  '+ geno_folder + ' ' + pop)
+    os.system('bash run_scripts/run_05_make_vcf.sh  '+ geno_folder + ' ' + pop)
     logging.info('Making fastenloc annotation files')
     os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop) 
 
 if gwasSS: 
         logging.info('Running summary stats')
         os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
-        os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD_block + ' --sumstats ' + gwasSS + ' --pop ' + pop + ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
+        os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD_block + ' --sumstats ' + gwasSS +  ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
         logging.info('Running TORUS on gwas SS')
         os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix + ' ' + pop)
         logging.info('Running fastenloc')
