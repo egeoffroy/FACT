@@ -1,6 +1,9 @@
 import os
 import sys
 import argparse
+import shlex
+import subprocess
+import logging
 
 logger = logging.getLogger(__name__)
 logFormatter = '%(message)s'
@@ -38,12 +41,10 @@ def check_arg(args=None):
                         required='False'
                         )
     parser.add_argument('-start', '--start',
-                        help='chromosome range start',  default=21,
-                        required='False'
+                        help='chromosome range start',  default=21
                         )
     parser.add_argument('-stop', '--stop',
-                        help='chromosome range stop', default=22,
-                        required='False'
+                        help='chromosome range stop', default=22
                         )
     return parser.parse_args(args)
 
@@ -55,7 +56,7 @@ gwasSS = args.gwas_SS
 LD = args.LD
 gwas_prefix = args.gwas_out_prefixes
 if args.chr:
-    log_a = 'Chromosomes tested are: {} {}'.format(chr[0], chr[1])
+    log_a = 'Chromosomes tested are: {} {}'.format(args.chr[0], args.chr[1])
     logging.info(log_a)
     start = args.chr[0]
     stop = args.chr[1]
@@ -72,7 +73,7 @@ if args.geno :
     logging.info("Making directory for all 1Mb sbams")
     os.system('mkdir ' + pop + '_all1Mb_sbams')
     logging.info("Make Run Scripts")
-    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + start)
+    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + stop)
     #work on timing between steps to prevent the program from going over steps before files are ready
     os.system('bash nohup_01.txt')
     #os.system('at now + 7 hours')
