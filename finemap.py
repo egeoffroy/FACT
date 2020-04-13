@@ -44,7 +44,7 @@ def check_arg(args=None):
                         help='LD blocks locus file'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', default=[1, 22]
+                        help='chromosome range', default=[1, 22], nargs='+'
                         )
     return parser.parse_args(args)
 
