@@ -56,12 +56,12 @@ gwasSS = args.gwas_SS
 LD = args.LD
 gwas_prefix = args.gwas_out_prefixes
 if args.chr:
-    log_a = 'Chromosomes tested are: {} {}'.format(args.chr[0], args.chr[1])
+    log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
     logging.info(log_a)
     start = args.chr[0]
     stop = args.chr[1]
 else:
-    log_b = 'Chromosomes tested are: {} {}'.format(start, stop)
+    log_b = 'Chromosome range tested is: {} to {}'.format(start, stop)
     logging.info(log_b)
     start = args.start
     stop = args.stop
