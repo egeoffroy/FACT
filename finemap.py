@@ -37,9 +37,6 @@ def check_arg(args=None):
     parser.add_argument('-g', '--geno',
                         help='input genotype folder'
                         )
-    #parser.add_argument('-p', '--pheno',
-    #                    help='input phenotype file'
-    #                    )
     parser.add_argument('-m', '--genemap',
                         help='gene position map'
                         )
@@ -69,4 +66,6 @@ if args.fastenloc: # This is currently broken because of the chromosome thing...
     if args.chr:
          start = args.chr[0]
          stop = args.chr[1]
-    os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.meqtl + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --start ' + start + ' --stop ' + stop + ' --gwas_out_prefixes '+ args.pheno_id)
+    make_cmd = 'python3 main.py --geno {} --meqtl {} --genemap {} --pop {} --gwas_SS {} --LD {} --start {} --stop {} --gwas_out_prefixes {}'.format(args.geno, args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, start, stop, args.pheno_id)
+    os.system(make_cmd)
+    #os.system('python3 main.py --geno ' + args.geno + ' --pheno ' + args.meqtl + ' --genemap ' + args.genemap + ' --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS +' --LD ' + args.LD +' --start ' + start + ' --stop ' + stop + ' --gwas_out_prefixes '+ args.pheno_id)
