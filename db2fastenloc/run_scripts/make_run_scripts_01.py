@@ -47,7 +47,7 @@ outdir = args.outdir
 pop = args.pop
 start = int(args.start)
 stop = int(args.stop)
-qsubfile = open('../nohup_01.txt','w')
+qsubfile = open('nohup_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
 for i in range(start,stop):
