@@ -8,6 +8,8 @@
                 - subprocess
                 - shlex
                 - argparse
+                - logging
+                - sys
 
 #### - R 
                 - dplyr
