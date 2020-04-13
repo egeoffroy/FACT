@@ -72,7 +72,7 @@ if args.geno :
     logging.info("Making directory for all 1Mb sbams")
     os.system('mkdir ' + pop + '_all1Mb_sbams')
     logging.info("Make Run Scripts")
-    make_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --meqtl {} --genemap {} --pop {} --outdir {}_all1MBsbams --start {} --stop {}'.format(geno_folder, phenofile, genemapfile, pop, pop, start, stop)
+    make_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --meqtl {} --genemap {} --pop {} --outdir {}_all1Mb_sbams --start {} --stop {}'.format(geno_folder, phenofile, genemapfile, pop, pop, start, stop)
     os.system(make_cmd)
     #os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + stop)
     #work on timing between steps to prevent the program from going over steps before files are ready
