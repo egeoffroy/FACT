@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-'''make a run script for each subset and output a qsub file'''
+'''make a run script for each subset and output a file to run each chromosome'''
 import string
 import argparse
 import sys
@@ -50,7 +50,7 @@ stop = int(args.stop)
 qsubfile = open('run_01.txt','w')
 prescript = '01_all1MbSNPs2dat'
 
-for i in range(start,stop):
+for i in range(start,stop+1):
     #write range into logger
     newi = str(i)
     outfilename = 'run_scripts/run_' + prescript + '_' + newi + '.sh'
