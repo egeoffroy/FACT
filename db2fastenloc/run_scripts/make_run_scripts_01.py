@@ -12,8 +12,8 @@ def check_arg(args=None):
                         help='input genotype file',
                         required='True'
                         )
-    parser.add_argument('-p', '--pheno',
-                        help='input phenotype file',
+    parser.add_argument('-meqtl', '--meqtl',
+                        help='input meqtl file',
                         required='True'
                         )
     parser.add_argument('-m', '--genemap',
@@ -41,7 +41,7 @@ def check_arg(args=None):
 #retrieve command line arguments
 args = check_arg(sys.argv[1:])
 genofile = args.geno
-phenofile = args.pheno
+phenofile = args.meqtl
 genemapfile = args.genemap
 outdir = args.outdir
 pop = args.pop
