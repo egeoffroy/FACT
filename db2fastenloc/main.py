@@ -28,7 +28,7 @@ def check_arg(args=None):
                         help='GWAS Summary Statistics File',
                         required='True'
                         )
-    parser.add_argument('-LD', '--LD',
+    parser.add_argument('-LD_block', '--LD_block',
                         help='LD blocks locus file',
                         required='True'
                         )
@@ -37,8 +37,7 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', nargs='+', default=[21, 22],
-                        required='False'
+                        help='chromosome range', nargs='+', default=[21, 22]
                         )
     parser.add_argument('-start', '--start',
                         help='chromosome range start',  default=21
@@ -53,7 +52,7 @@ logging.info("Beginning db2fastenloc pipeline")
 args = check_arg(sys.argv[1:])
 pop = args.pop
 gwasSS = args.gwas_SS
-LD = args.LD
+LD_block = args.LD_block
 gwas_prefix = args.gwas_out_prefixes
 if args.chr:
     log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
@@ -77,7 +76,7 @@ if args.geno :
     os.system(make_cmd)
     #os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + stop)
     #work on timing between steps to prevent the program from going over steps before files are ready
-    os.system('bash nohup_01.txt')
+    os.system('bash run_01.txt')
     #os.system('at now + 7 hours')
     os.system('bash run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop)
     os.system('python3 02b_concat_scan_out_bf_files.py --pop ' + pop)
