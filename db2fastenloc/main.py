@@ -11,8 +11,8 @@ def check_arg(args=None):
     parser.add_argument('-g', '--geno',
                         help='input genotype folder'
                         )
-    parser.add_argument('-p', '--pheno',
-                        help='input phenotype file'
+    parser.add_argument('-meqtl', '--meqtl',
+                        help='input meqtl file'
                         )
     parser.add_argument('-m', '--genemap',
                         help='gene position map'
@@ -67,12 +67,12 @@ else:
     
 if args.geno :
     geno_folder = args.geno
-    phenofile = args.pheno
+    phenofile = args.meqtl
     genemapfile = args.genemap
     logging.info("Making directory for all 1Mb sbams")
     os.system('mkdir ' + pop + '_all1Mb_sbams')
     logging.info("Make Run Scripts")
-    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --pheno '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + start)
+    os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + start)
     #work on timing between steps to prevent the program from going over steps before files are ready
     os.system('bash nohup_01.txt')
     #os.system('at now + 7 hours')
