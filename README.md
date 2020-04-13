@@ -93,13 +93,15 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________________________
 ## FASTENLOC Input: 
 * --geno : Folder path to genotype and genotype annotation data
-* --LD : Linkage Disequilibrium annotation file 
+* --LD_block : Linkage Disequilibrium annotation file 
 * --genemap : Gene Annotation file
 * --gwas_SS : GWAS Summary Statistics file
-* --pheno : Matrix eQTL gene expression file
+* --meqtl : Matrix eQTL gene expression file
 * --pop : population id
 * --gwas_out_prefixes : prefixes for GWAS phenotypes
 * --chr : a range of chromosome numbers. The default is chromsomes 21 and 22. 
+* --start : start chromosome [optional]
+* --stop : end chromosome [optional]
 
 ## FASTENLOC Scripts
 1. Convert mEQTL file to .dat files → file for every gene
