@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 
 #create files that identify top ten RCP hits
+def check_arg(args=None):
+    parser = argparse.ArgumentParser(description='Matrix EQTL to .dat format from .db SNP list')
+    parser.add_argument('-b', '--pop',
+                        help='group/pop id for group_id column of .dat file',
+                        required='True'
+                        )
+args = check_arg(sys.argv[1:])
+pop = args.pop
 import csv
 
 input_file = '{}_gwasprefix.enloc.sig.out'.format(pop)
