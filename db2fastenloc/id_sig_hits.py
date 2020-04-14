@@ -23,3 +23,4 @@ for line in head:
 with open('significant_RCP.txt','w') as outfile:
     for i in data:
         outfile.write(i[5] + '\n')
+outfile.close()
