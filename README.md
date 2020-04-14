@@ -1,4 +1,4 @@
-# Fine-mapping Pipeline
+# FACT+ : Fine-mapping and Colocalization Pipeline
 
 ## Languages and Packages
 #### - Bash
