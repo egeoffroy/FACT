@@ -14,6 +14,8 @@ def check_arg(args=None):
                         help='group/pop id for group_id column of .dat file',
                         required='True'
                         )
+    
+    return(parser.parse_args(args))
 args = check_arg(sys.argv[1:])
 pop = args.pop
 
