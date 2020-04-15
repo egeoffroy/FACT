@@ -1,6 +1,7 @@
 # FASTENLOC 
 
-## Tutorial: see (wiki)[]
+## Tutorial:
+Please see [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki).
 
 ____________________________________________________________________________________________________________________________________
 ## FASTENLOC Input: 
