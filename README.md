@@ -67,25 +67,6 @@ Clone this into the [coloc](https://github.com/egeoffroy/Fine-mapping_Pipeline/t
 ## Tutorial:
 Please see the [wiki](https://github.com/egeoffroy/Fine-mapping_Pipeline/wiki). 
 
-____________________________________________________________________________________________________________________________________
-
-## COLOC Input:
-* --gwas_SS : GWAS Summary Statistics file
-* --frq : .frq PLINK file
-* --meqtl : Matrix eQTL Gene expression file (optional)
-* --filter_by : file of significant S-PrediXcan/PrediXcan results
-* --pop : population id
-* --pheno_id : phenotype id
-
-## COLOC Scripts:
-1. SNP_lists.R : script that takes all of the GWAS Summary Statistics SNPs and writes them out to a separate file to only use those SNPs later.
-2. make_coloc_files.R : formats Matrix eQTL and GWAS Summary Statistics data into the proper COLOC input. Also requires the output from SNP_lists.R and the .frq file.
-3. coloc_pipeline_main.py : main pipeline wrapper that ties together the other scripts. 
-4. run_pipeline_1.sh: calls the pipeline developed by the Im Lab at UChicago to run COLOC with the properly formatted files.
-
-## COLOC Output:
-1. output_pop_pheno.txt.gz: COLOC output. A file with the probabilites for each of the five hypotheses for each gene.
-2. sig_genes_coloc_pop_pheno.csv: The filtered COLOC output file by only looking at the genes found significant by the TWAS Method.
 
 
 
