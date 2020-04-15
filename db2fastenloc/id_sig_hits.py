@@ -2,6 +2,7 @@
 import os
 import sys
 import shlex
+import argparse
 #create files that identify top ten RCP hits
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Matrix EQTL to .dat format from .db SNP list')
@@ -18,7 +19,7 @@ pop = args.pop
 
 import csv
 
-input_file = '{}_{}.enloc.sig.out'.format(pop, args.prefix)
+input_file = '{}_all1Mb_{}.enloc.sig.out'.format(pop, args.prefix)
 with open(input_file, 'r') as results:
     data =csv.reader(results, delimiter='\t')
     sortData = sorted(data, key=lambda x: int(x[5]), reverse=True)
