@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-
+import os
+import sys
 #create files that identify top ten RCP hits
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Matrix EQTL to .dat format from .db SNP list')
