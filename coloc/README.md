@@ -20,19 +20,26 @@ Python Libraries
 
 Clone [this](https://github.com/hakyimlab/summary-gwas-imputation) GitHub repository into this directory. 
 
+____________________________________________________________________________________________________________________________________
 
-## Input:
---pheno_id: Phenotype ID
+## COLOC Input:
+* --gwas_SS : GWAS Summary Statistics file
+* --frq : .frq PLINK file
+* --meqtl : Matrix eQTL Gene expression file (optional)
+* --filter_by: an optional flag signaling the script to also run the script filter_results.R with the inputted file of significant genes from S-PrediXcan or PrediXcan.
+* --pop : population id
+* --pheno_id : phenotype id
 
---pop: Population ID
+## COLOC Scripts:
+1. SNP_lists.R : script that takes all of the GWAS Summary Statistics SNPs and writes them out to a separate file to only use those SNPs later.
+2. make_coloc_files.R : formats Matrix eQTL and GWAS Summary Statistics data into the proper COLOC input. Also requires the output from SNP_lists.R and the .frq file.
+3. coloc_pipeline_main.py : main pipeline wrapper that ties together the other scripts. 
+4. run_pipeline_1.sh: calls the pipeline developed by the Im Lab at UChicago to run COLOC with the properly formatted files.
 
---gwas_SS: harmonised GWAS Summary Statistics*
+## COLOC Output:
+1. output_pop_pheno.txt.gz: COLOC output. A file with the probabilites for each of the five hypotheses for each gene.
+2. sig_genes_coloc_pop_pheno.csv: The filtered COLOC output file by only looking at the genes found significant by the TWAS Method.
 
---meqtl: meQTL file
-
---frq: .frq file from PLINK
-
---filter_by: an optional flag signaling the script to also run the script filter_results.R with the inputted file of significant genes from S-PrediXcan or PrediXcan.
 
 This program works for six different populations--the five MESA populations and the International HapMap Project's Yoruban population.
 * ALL
@@ -47,24 +54,13 @@ This program works for six different populations--the five MESA populations and 
 
 ## Run Software:
 
-
-### Script Description
-SNP_list.R: pull out the SNPs from the GWAS Summary Statistics that were found to be associated with the particular trait. Only run COLOC on these SNPs, not all the SNPs in the eQTL file.
-
-make_coloc_files.R: comverts eQTL and GWAS into the proper COLOC input format. Requires the matrix eQTL file, significant SNPs file, GWAS and eQTL sizes, frq file, and GWAS Summary Statistics file.
-
-filter_results.R: an optional script to filter out the genes that were found to be significant in PrediXcan/S-PrediXcan. Requires the user to use the flag --filter_by. This file must contain a column called gene.
-
-coloc_pipeline_main.py: main wrapper file for the pipeline.
-
-### Run the Program
 ```
 python3 coloc_pipeline_main.py --pheno_id ${pheno} --pop ${pop} --gwas_SS ${gwas} --frq ${frq} --meqtl ${meqtl} --filter_by ${PrediXcan significant hits file}
 
 ```
 
 
-## Output: 
+## Output Description: 
 COLOC returns five posterior probabilities (PP) for each of the two SNPs tested. If the third posterior probability (PP3) is large, then they conclude there are two independent causal SNPs associated with each trait. If the PP4 is large, then only a single variant is affecting both traits. If PP0 is large, neither SNP is in association with the trait. 
 
 #### P0: There is no SNP or variant that has association with either trait 1 or trait 2
