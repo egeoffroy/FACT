@@ -59,7 +59,7 @@ if args.chr:
     logging.info(log_a)
     start = args.chr[0]
     stop = args.chr[1]
-else:
+elif args.start and args.stop:
     log_b = 'Chromosome range tested is: {} to {}'.format(start, stop)
     logging.info(log_b)
     start = args.start
