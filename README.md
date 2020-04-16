@@ -2,7 +2,6 @@
 
 ## Languages and Packages
 #### - Bash
-                - at
 #### - Python3
                 - os
                 - subprocess
