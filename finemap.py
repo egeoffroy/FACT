@@ -48,6 +48,9 @@ def check_arg(args=None):
     parser.add_argument('-chr', '--chr',
                         help='chromosome range', default=[1, 22], nargs='+'
                         )
+    parser.add_argument('-pop_size', '--pop_size',
+                        help='Population size'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -56,7 +59,7 @@ args = check_arg(sys.argv[1:])
 if args.coloc:
     os.chdir('./coloc')
     if args.meqtl: 
-            os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl)
+            os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl + ' --pop_size ' + args.pop_size)
             if args.filter_by:
                 os.system('python3 .coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by + ' --meqtl ' + args.meqtl)
     if args.filter_by:
