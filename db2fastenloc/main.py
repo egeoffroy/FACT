@@ -40,10 +40,10 @@ def check_arg(args=None):
                         help='chromosome range', nargs='+', default=[1, 22]
                         )
     parser.add_argument('-start', '--start',
-                        help='chromosome range start',  default=21
+                        help='chromosome range start'
                         )
     parser.add_argument('-stop', '--stop',
-                        help='chromosome range stop', default=22
+                        help='chromosome range stop'
                         )
     return parser.parse_args(args)
 
