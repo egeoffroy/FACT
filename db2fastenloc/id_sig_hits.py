@@ -29,7 +29,7 @@ with open(input_file, 'r') as results:
         for j in i:
             j = j.split()
         data.append(j)
-    sortData = sorted(data, key=lambda x: int(x[5]), reverse=True)
+    sortData = sorted(data, key=lambda x: float(x[5]), reverse=True)
 with open('significant_RCP.txt','w') as outfile:
     for i in range(10):
         outfile.write(str('\t'.join([str(x) for x in sortData[i]]))+'\n')
