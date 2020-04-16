@@ -60,10 +60,10 @@ if args.chr:
     start = args.chr[0]
     stop = args.chr[1]
 elif args.start and args.stop:
-    log_b = 'Chromosome range tested is: {} to {}'.format(start, stop)
-    logging.info(log_b)
     start = args.start
     stop = args.stop
+    log_b = 'Chromosome range tested is: {} to {}'.format(start, stop)
+    logging.info(log_b)
     
 if args.geno :
     geno_folder = args.geno
