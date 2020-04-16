@@ -61,10 +61,10 @@ if args.coloc:
     if args.meqtl: 
             os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl + ' --pop_size ' + args.pop_size)
             if args.filter_by:
-                os.system('python3 .coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by + ' --meqtl ' + args.meqtl)
+                os.system('python3 .coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by + ' --meqtl ' + args.meqtl + ' --pop_size ' + args.pop_size)
     if args.filter_by:
-            os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by)
-    os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id)
+            os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --filter_by ' + args.filter_by + ' --pop_size ' + args.pop_size)
+    os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --pop_size ' + args.pop_size)
 
 if args.fastenloc: # Updated: works
     os.chdir('./db2fastenloc')
