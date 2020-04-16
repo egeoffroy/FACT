@@ -40,14 +40,14 @@ pop = args.pop
 frqfile = args.frq
 gwasSS = args.gwas_SS
 pop_size = args.pop_size
-populations = {
-  "AFA": 233,
-  "AFHI": 585,
-  "CAU": 578,
-  "HIS": 352,
-  "ALL": 1163,
-  "YRI": 107
-}
+#populations = {
+#  "AFA": 233,
+#  "AFHI": 585,
+#  "CAU": 578,
+#  "HIS": 352,
+#  "ALL": 1163,
+#  "YRI": 107
+#}
 
 if path.isdir('coloc'):
         print('Directory coloc exists')
@@ -58,10 +58,9 @@ command = 'Rscript SNP_list.R ' + gwasSS + ' ' + phenoid
 result = subprocess.getoutput(command)
 
 if args.meqtl:
-    os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + pop_size + ' ' + args.meqtl) #currently only for MESA models
+    os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + pop_size + ' ' + args.meqtl) 
 else:
-    os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop))) #currently only for MESA models
-
+    os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + pop_size) 
 os.system('bash run_pipeline_1.sh ' + pop + ' ' + phenoid + ' ' + str(populations.get(pop)))
 
 if args.filter_by:
