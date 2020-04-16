@@ -28,6 +28,9 @@ def check_arg(args=None):
     parser.add_argument('-filter_by', '--filter_by',
                         help='filter by this file of significant genes from S-PrediXcan/PrediXcan output. Requires gene column'
                         )
+    parser.add_argument('-pop_size', '--pop_size',
+                        help='Population size'
+                        )
     return parser.parse_args(args)
 
 #retrieve command line arguments
@@ -36,6 +39,7 @@ phenoid = args.pheno_id
 pop = args.pop
 frqfile = args.frq
 gwasSS = args.gwas_SS
+pop_size = args.pop_size
 populations = {
   "AFA": 233,
   "AFHI": 585,
@@ -54,7 +58,7 @@ command = 'Rscript SNP_list.R ' + gwasSS + ' ' + phenoid
 result = subprocess.getoutput(command)
 
 if args.meqtl:
-    os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop)) + ' ' + args.meqtl) #currently only for MESA models
+    os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + pop_size + ' ' + args.meqtl) #currently only for MESA models
 else:
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + str(populations.get(pop))) #currently only for MESA models
 
