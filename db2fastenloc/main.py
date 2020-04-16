@@ -54,7 +54,8 @@ pop = args.pop
 gwasSS = args.gwas_SS
 LD_block = args.LD_block
 gwas_prefix = args.gwas_out_prefixes
-
+log_char = 'Population tested is: {} . GWAS Summary Statistics is: {} . LD block file is {}'.format(pop, gwas_prefix, LD_block)
+logging.info(log_char)
 if args.start and args.stop:
     start = args.start
     stop = args.stop
