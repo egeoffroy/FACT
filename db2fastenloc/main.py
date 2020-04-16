@@ -54,16 +54,18 @@ pop = args.pop
 gwasSS = args.gwas_SS
 LD_block = args.LD_block
 gwas_prefix = args.gwas_out_prefixes
-if args.chr:
-    log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
-    logging.info(log_a)
-    start = args.chr[0]
-    stop = args.chr[1]
-elif args.start and args.stop:
+
+if args.start and args.stop:
     start = args.start
     stop = args.stop
     log_b = 'Chromosome range tested is: {} to {}'.format(start, stop)
     logging.info(log_b)
+elif args.chr:
+    log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
+    logging.info(log_a)
+    start = args.chr[0]
+    stop = args.chr[1]
+
     
 if args.geno :
     geno_folder = args.geno
