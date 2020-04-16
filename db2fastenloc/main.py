@@ -37,7 +37,7 @@ def check_arg(args=None):
                         required='True'
                         )
     parser.add_argument('-chr', '--chr',
-                        help='chromosome range', nargs='+', default=[21, 22]
+                        help='chromosome range', nargs='+', default=[1, 22]
                         )
     parser.add_argument('-start', '--start',
                         help='chromosome range start',  default=21
