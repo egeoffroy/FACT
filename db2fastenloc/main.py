@@ -97,7 +97,8 @@ if gwasSS:
         os.system('bash 09_all1MbSNPs_fastenloc.sh ' + gwas_prefix + ' ' + pop)
         logging.info('Getting significant RCP values')
         #os.system('Rscript 10_get_sig_RCP.R ' + gwas_prefix + ' ' + pop)
-        os.system('python3 id_sig_hits.py --pop ' + pop + ' --prefix ' + gwas_prefix)
+        sig_hits = 'python3 id_sig_hits.py --pop {} --gwas_out_prefixes {}.format(pop, gwas_prefix)
+        os.system(sig_hits)
         
 
 
