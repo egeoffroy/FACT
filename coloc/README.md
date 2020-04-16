@@ -28,6 +28,7 @@ ________________________________________________________________________________
 * --meqtl : Matrix eQTL Gene expression file (optional)
 * --filter_by: an optional flag signaling the script to also run the script filter_results.R with the inputted file of significant genes from S-PrediXcan or PrediXcan.
 * --pop : population id
+* --pop_size : eQTL population size
 * --pheno_id : phenotype id
 
 ## COLOC Scripts:
