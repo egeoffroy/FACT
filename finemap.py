@@ -15,6 +15,9 @@ def check_arg(args=None):
     parser.add_argument('-fastenloc', '--fastenloc', action="store_true", dest="fastenloc", default=False,
                         help='input test type'
                         )
+    parser.add_argument('-fastenloc_SS', '--fastenloc_SS', action="store_true", dest="fastenloc_SS", default=False,
+                        help='input test type'
+                        )
     parser.add_argument('-pid', '--pheno_id',
                         help='input phenotype id',
                         required='True'
@@ -71,10 +74,15 @@ if args.fastenloc: # Updated: works
     if args.chr:
          start = args.chr[0]
          stop = args.chr[1]
-         if args.geno:
-            make_cmd = 'python3 main.py --geno {} --meqtl {} --genemap {} --pop {} --gwas_SS {} --LD_block {} --start {} --stop {} --gwas_out_prefixes {}'.format(args.geno, args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, start, stop, args.pheno_id)
-         else:
-             make_cmd = 'python3 main.py --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, args.pheno_id)
+         make_cmd = 'python3 main.py --geno {} --meqtl {} --genemap {} --pop {} --gwas_SS {} --LD_block {} --start {} --stop {} --gwas_out_prefixes {}'.format(args.geno, args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, start, stop, args.pheno_id)
          os.system(make_cmd)
     else:
         print('No chromosome entered. Using default chromosomes 1 through 22')
+
+if args.fastenloc_SS: 
+    os.chdir('./db2fastenloc')
+    make_cmd = 'python3 main.py --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, args.pheno_id)
+    os.system(make_cmd)
+    
+else:
+    print('No input test type selected.)
