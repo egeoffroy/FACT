@@ -74,7 +74,7 @@ if args.fastenloc: # Updated: works
          if args.geno:
             make_cmd = 'python3 main.py --geno {} --meqtl {} --genemap {} --pop {} --gwas_SS {} --LD_block {} --start {} --stop {} --gwas_out_prefixes {}'.format(args.geno, args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, start, stop, args.pheno_id)
          else:
-             make_cmd = 'python3 main.py --meqtl {} --genemap {} --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, args.pheno_id)
+             make_cmd = 'python3 main.py --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, args.pheno_id)
          os.system(make_cmd)
     else:
         print('No chromosome entered. Using default chromosomes 1 through 22')
