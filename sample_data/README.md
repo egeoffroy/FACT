@@ -1,5 +1,8 @@
 # Sample Data For Tutorial
 
+## Access
+
+To access the rest of the sample data, download these [files](https://drive.google.com/file/d/1BwvR-Su6vGLfWKZbIGK2D8NSTyyPjd21/view?usp=sharing)
 ## Test FASTENLOC Pipeline
 
 ```
