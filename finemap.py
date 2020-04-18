@@ -85,4 +85,4 @@ if args.fastenloc_SS:
     os.system(make_cmd)
     
 else:
-    print('No input test type selected.)
+    print('No input test type selected.')
