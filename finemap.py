@@ -81,7 +81,7 @@ if args.fastenloc: # Updated: works
 
 if args.fastenloc_SS: 
     os.chdir('./db2fastenloc')
-    make_cmd = 'python3 main.py --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, args.pheno_id)
+    make_cmd = 'python3 main.py --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.pop, args.gwas_SS, args.LD, args.pheno_id)
     os.system(make_cmd)
     
 else:
