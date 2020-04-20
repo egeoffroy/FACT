@@ -7,6 +7,10 @@ import shlex
 import subprocess
 import logging
 
+logger = logging.getLogger(__name__)
+logFormatter = '%(message)s'
+logging.basicConfig(filename='FACT_logger.log', format=logFormatter, level=logging.DEBUG)
+
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Run fastenloc or coloc for various GWAS SS')
     parser.add_argument('--coloc',action="store_true", dest="coloc", default=False,
@@ -60,6 +64,7 @@ def check_arg(args=None):
 args = check_arg(sys.argv[1:])
 
 if args.coloc:
+    logging.info("Running COLOC pipeline.")
     os.chdir('./coloc')
     if args.meqtl: 
             os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl + ' --pop_size ' + args.pop_size)
@@ -71,18 +76,24 @@ if args.coloc:
 
 if args.fastenloc: # Updated: works
     os.chdir('./db2fastenloc')
+    logging.info("Running FASTENLOC pipeline.")
     if args.chr:
          start = args.chr[0]
          stop = args.chr[1]
          make_cmd = 'python3 main.py --geno {} --meqtl {} --genemap {} --pop {} --gwas_SS {} --LD_block {} --start {} --stop {} --gwas_out_prefixes {}'.format(args.geno, args.meqtl, args.genemap, args.pop, args.gwas_SS, args.LD, start, stop, args.pheno_id)
          os.system(make_cmd)
+         chr_info = 'Chromosomes tested are {} through {}'.format(start,stop)
+         logging.info(chr_info)
     else:
         print('No chromosome entered. Using default chromosomes 1 through 22')
+        logging.info("No chromosome user input. Testing chromosomes 1 through 22.")
 
-if args.fastenloc_SS: 
+if args.fastenloc_SS:
+    logging.info("Running FASTENLOC test pipeline")
     os.chdir('./db2fastenloc')
     make_cmd = 'python3 main.py --pop {} --gwas_SS {} --LD_block {} --gwas_out_prefixes {}'.format(args.pop, args.gwas_SS, args.LD, args.pheno_id)
     os.system(make_cmd)
     
 else:
     print('No input test type selected.')
+    logging.info("No input test type selected.")
