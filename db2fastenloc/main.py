@@ -102,6 +102,6 @@ if gwasSS:
         #os.system('Rscript 10_get_sig_RCP.R ' + gwas_prefix + ' ' + pop)
         sig_hits = 'python3 id_sig_hits.py --pop {} --prefix {}'.format(pop, gwas_prefix)
         os.system(sig_hits)
-        
+        logging.info('Pipeline complete')
 
 
