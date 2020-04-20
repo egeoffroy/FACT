@@ -92,7 +92,7 @@ if args.geno :
 
 if gwasSS: 
         logging.info('Running summary stats')
-        os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
+        #os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
         os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD_block + ' --sumstats ' + gwasSS +  ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
         logging.info('Running TORUS on gwas SS')
         os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix + ' ' + pop)
