@@ -1,3 +1,5 @@
+#This script formats the eQTL and GWAS data for COLOC input
+
 library(data.table)
 library(dplyr)
 library(R.utils)
@@ -5,7 +7,7 @@ print(getwd())
 
 "%&%" = function(a,b) paste(a,b,sep="")
 
-args = commandArgs(trailingOnly=TRUE)
+args = commandArgs(trailingOnly=TRUE) #get arguments
 phenofile <- args[1]
 frqfile <- args[2]
 phenos <- args[3]
@@ -16,7 +18,7 @@ meqtlfile <- args[6]
 
 chrs <- c(1:22)
 
-sig_gene_SNPs <- fread(paste("GWAS_SNPs_", phenos, ".txt", sep = ''), header = F) #so we don't run all the SNPs b/c it takes forever
+sig_gene_SNPs <- fread(paste("GWAS_SNPs_", phenos, ".txt", sep = ''), header = F) #get SNPs from GWAS
 sig_gene_SNPs <- sig_gene_SNPs$V1
 
   frq <- fread(frqfile)
