@@ -5,8 +5,10 @@ import shlex
 import subprocess
 import logging
 
+#initialize logger
 logger = logging.getLogger(__name__)
 logFormatter = '%(message)s'
+#Set logger name here
 logging.basicConfig(filename='ProgressLogger.log', format=logFormatter, level=logging.DEBUG)
 
 def check_arg(args=None):
@@ -48,6 +50,7 @@ def check_arg(args=None):
     return parser.parse_args(args)
 
 #retrieve command line arguments
+#cast command line arguments to variables
 logging.info("Beginning db2fastenloc pipeline")
 args = check_arg(sys.argv[1:])
 pop = args.pop
@@ -56,18 +59,21 @@ LD_block = args.LD_block
 gwas_prefix = args.gwas_out_prefixes
 log_char = 'Population tested is: {} . GWAS Summary Statistics is: {} . LD block file is {}'.format(pop, gwas_prefix, LD_block)
 logging.info(log_char)
+
+#if given start and stop chromosome arguments
 if args.start and args.stop:
     start = args.start
     stop = args.stop
     log_b = 'Chromosome range tested is: {} to {}'.format(start, stop)
     logging.info(log_b)
+#if given a --chr range argument    
 elif args.chr:
     log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
     logging.info(log_a)
     start = args.chr[0]
     stop = args.chr[1]
 
-    
+#if user input a genotype folder    
 if args.geno :
     geno_folder = args.geno
     phenofile = args.meqtl
@@ -77,8 +83,6 @@ if args.geno :
     logging.info("Make Run Scripts")
     make_cmd = 'python3 run_scripts/make_run_scripts_01.py --geno {} --meqtl {} --genemap {} --pop {} --outdir {}_all1Mb_sbams --start {} --stop {}'.format(geno_folder, phenofile, genemapfile, pop, pop, start, stop)
     os.system(make_cmd)
-    #os.system('python3 run_scripts/make_run_scripts_01.py --geno '+geno_folder+' --meqtl '+phenofile+' --genemap '+genemapfile+' --pop '+pop+' --outdir ' + pop + '_all1Mb_sbams --start ' + start + ' --stop ' + stop)
-    #work on timing between steps to prevent the program from going over steps before files are ready
     os.system('bash run_01.txt')
     #os.system('at now + 7 hours')
     os.system('bash run_scripts/run_02_all1MbSNPs_batch_scan.sh ' + pop)
@@ -90,6 +94,7 @@ if args.geno :
     logging.info('Making fastenloc annotation files')
     os.system('bash 06_all1MbSNPs_make_fastenloc_anot.sh ' + pop) 
 
+#if user input GWAS Summary Statistics
 if gwasSS: 
         logging.info('Running summary stats')
         #os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
