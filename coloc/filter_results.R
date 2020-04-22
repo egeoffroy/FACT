@@ -1,3 +1,5 @@
+# This script filters COLOC results to only include the gene IDs that match the significant genes found by PrediXcan.
+
 library(dplyr)
 library(data.table)
 
