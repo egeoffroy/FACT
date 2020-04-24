@@ -55,7 +55,7 @@ if args.meqtl: #if user inputs meqtl file
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + pop_size + ' ' + args.meqtl) 
 else:
     os.system('Rscript make_coloc_files.R ' + gwasSS + ' ' + frqfile + ' ' + phenoid + ' ' + pop + ' ' + pop_size) 
-os.system('bash run_pipeline_1.sh ' + pop + ' ' + phenoid + ' ' + str(populations.get(pop))) #run COLOC
+os.system('bash run_pipeline_1.sh ' + pop + ' ' + phenoid + ' ' + pop_size) #run COLOC
 
 if args.filter_by: #filter results in user includes filtering PrediXcan significant genes file
     os.system('Rscript filter_results.R ' + phenoid + ' ' + pop + ' ' + args.filter_by)
