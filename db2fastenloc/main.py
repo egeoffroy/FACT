@@ -68,8 +68,8 @@ if args.start and args.stop:
     logging.info(log_b)
 #if given a --chr range argument    
 elif args.chr:
-    log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
-    logging.info(log_a)
+    #log_a = 'Chromosome range tested is: {} to {}'.format(args.chr[0], args.chr[1])
+    #logging.info(log_a)
     start = args.chr[0]
     stop = args.chr[1]
 
