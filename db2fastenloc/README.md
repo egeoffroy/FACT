@@ -8,7 +8,7 @@ ________________________________________________________________________________
 * --geno : Folder path to genotype and genotype annotation data
 * --LD_block : Linkage Disequilibrium annotation file 
 * --genemap : Gene Annotation file
-* --gwas_SS : GWAS Summary Statistics file
+* --gwas_SS : gzipped, harmonised GWAS Summary Statistics file
 * --meqtl : Matrix eQTL gene expression file
 * --pop : population id
 * --gwas_out_prefixes : prefixes for GWAS phenotypes
