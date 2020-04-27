@@ -97,10 +97,10 @@ if args.geno :
 #if user input GWAS Summary Statistics
 if gwasSS: 
         logging.info('Running summary stats')
-        #os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
+        os.system('Rscript 07a_sumstats_names.R ' + gwasSS)
         os.system('python3 07_prep_sumstats_1000G_LDblocks.py --ldblocks ' + LD_block + ' --sumstats ' + gwasSS +  ' --annot ' + pop + '_all1Mb_fastenloc.eqtl.annotation.vcf.gz' + ' --outprefix ' + gwas_prefix)
         logging.info('Running TORUS on gwas SS')
-        os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix + ' ' + pop)
+        os.system('bash 08_gwas_zval_torus.sh ' + gwas_prefix)
         logging.info('Running fastenloc')
         os.system('bash 09_all1MbSNPs_fastenloc.sh ' + gwas_prefix + ' ' + pop)
         logging.info('Getting significant RCP values')
