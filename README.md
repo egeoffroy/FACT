@@ -9,6 +9,7 @@
                 - argparse
                 - logging
                 - sys
+                - rpy2
 
 #### - R 
                 - dplyr
