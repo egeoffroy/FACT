@@ -53,7 +53,15 @@ This program works for six different populations--the five MESA populations and 
 
 *It is required that the GWAS Summary Statistics are the new harmonised versions as these only include the SNPs found to be significant in the original study and have standard column names. 
 
-## Run Software:
+## Run COLOC:
+To run the COLOC Pipeline in FACT+:
+```
+python3 finemap.py --pheno_id ${pheno} --pop ${pop} --gwas_SS ${gwas} --frq ${frq} --meqtl ${meqtl} --filter_by ${PrediXcan significant hits file}
+
+```
+
+## Run COLOC Pipeline Separately:
+To run the COLOC Pipeline outside of the FACT+:
 
 ```
 python3 coloc_pipeline_main.py --pheno_id ${pheno} --pop ${pop} --gwas_SS ${gwas} --frq ${frq} --meqtl ${meqtl} --filter_by ${PrediXcan significant hits file}
