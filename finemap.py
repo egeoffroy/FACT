@@ -66,7 +66,7 @@ args = check_arg(sys.argv[1:])
 if args.coloc:
     logging.info("Running COLOC pipeline.")
     os.chdir('./coloc')
-    if !path.exists('summary-gwas-imputation'):
+    if !os.path.isdir('./summary-gwas-imputation'): #path.exists('summary-gwas-imputation'):
         os.system('git clone https://github.com/hakyimlab/summary-gwas-imputation.git')
     if args.meqtl: 
             os.system('python3 coloc_pipeline_main.py --pop ' + args.pop + ' --gwas_SS ' + args.gwas_SS + ' --frq ' + args.frq + ' --pheno_id ' + args.pheno_id + ' --meqtl ' + args.meqtl + ' --pop_size ' + args.pop_size)
