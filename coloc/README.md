@@ -23,7 +23,7 @@ Clone [this](https://github.com/hakyimlab/summary-gwas-imputation) GitHub reposi
 ____________________________________________________________________________________________________________________________________
 
 ## COLOC Input:
-* --gwas_SS : a gzipped, harmonised GWAS Summary Statistics file
+* --gwas_SS : a harmonised GWAS Summary Statistics file
 * --frq : .frq PLINK file
 * --meqtl : Matrix eQTL Gene expression file (optional)
 * --filter_by: an optional flag signaling the script to also run the script filter_results.R with the inputted file of significant genes from S-PrediXcan or PrediXcan.
@@ -51,7 +51,7 @@ This program works for six different populations--the five MESA populations and 
 * YRI
 
 
-*It is required that the GWAS Summary Statistics are the new harmonised versions as these only include the SNPs found to be significant in the original study and have standard column names. The GWAS Summary Statistics must also be gzipped.
+*It is required that the GWAS Summary Statistics are the new harmonised versions as these only include the SNPs found to be significant in the original study and have standard column names.
 
 ## Run COLOC:
 To run the COLOC Pipeline in FACT+:
