@@ -26,7 +26,7 @@ find_beta_se <- function(x){
                 chr <- grep("chrom", names_data)-1
         }
         oa <- grep("other_allele" , names_data)-1
-        if(length(oa) ==0){                                                                                             
+        if(length(oa) ==0){
                 oa <- grep("allele2", names_data)-1
         }
         ae <- grep("effect_allele" , names_data)-1
@@ -46,5 +46,4 @@ find_beta_se <- function(x){
         col_list <- c(beta, se, chr, bp, oa, ae)
         return(col_list)
 }
-
 write.csv(find_beta_se(args[1]), "column_numbers.csv", quote = F, row.names=F)
