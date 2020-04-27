@@ -6,6 +6,7 @@ import argparse
 import shlex
 import subprocess
 import logging
+from os import path
 
 logger = logging.getLogger(__name__)
 logFormatter = '%(message)s'
