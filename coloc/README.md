@@ -35,7 +35,7 @@ ________________________________________________________________________________
 1. SNP_lists.R : script that takes all of the GWAS Summary Statistics SNPs and writes them out to a separate file to only use those SNPs later.
 2. make_coloc_files.R : formats Matrix eQTL and GWAS Summary Statistics data into the proper COLOC input. Also requires the output from SNP_lists.R and the .frq file.
 3. coloc_pipeline_main.py : main pipeline wrapper that ties together the other scripts. 
-4. run_pipeline_1.sh: calls the pipeline developed by the Im Lab at UChicago to run COLOC with the properly formatted files.
+4. run_pipeline_1.sh: calls the [pipeline](https://github.com/hakyimlab/summary-gwas-imputation) developed by the Im Lab at UChicago to run COLOC with the properly formatted files.
 
 ## COLOC Output:
 1. output_pop_pheno.txt.gz: COLOC output. A file with the probabilites for each of the five hypotheses for each gene.
@@ -67,6 +67,6 @@ COLOC returns five posterior probabilities (PP) for each of the two SNPs tested.
 #### P0: There is no SNP or variant that has association with either trait 1 or trait 2
 #### P1: One SNP/variant has association with trait 1 but not with trait 2
 #### P2: One SNP/variant has association with trait 2 but not with trait 1
-#### P3: Two independent causal SNPs/variants associated with each trait
-#### P4: One single SNP/variant associated with each trait
+#### P3: Two independent causal SNPs/variants associated with each trait --> non-colocalized GWAS and eQTL signals
+#### P4: One single SNP/variant associated with each trait --> colocalized GWAS and eQTL signals
 
