@@ -37,6 +37,15 @@ sumstatsfile = args.sumstats
 annotfile = args.annot
 outprefix = args.outprefix
 
+#get column names for beta and se from R function
+column = open("column_numbers.csv").readlines()
+beta_column = int(column[1].replace('\n', ''))
+se_column = int(column[2].replace('\n', ''))
+chr_column = int(column[3].replace('\n', ''))
+bp_column = int(column[4].replace('\n', ''))
+oallele_column = int(column[5].replace('\n', ''))
+eallele_column = int(column[6].replace('\n', ''))
+
 #make Z-score (beta/se) dictionary from sumstats
 #you may need to choose diff columns depending on sumstat format
 zdict = dict()
@@ -44,15 +53,20 @@ for line in gzip.open(sumstatsfile):
     arr = line.strip().split()
     #convert bytes to str for each item in list
     arr = [x.decode("utf-8") for x in arr]
-    (chr, bp, oallele, eallele) = arr[0:4]
-    beta = arr[6]
-    se = arr[7]
-    if beta == "beta" or beta == "Beta": #skip header and extra rows
+    #(chr, bp, oallele, eallele) = arr[0:4]
+    beta = arr[beta_column]
+    oallele = arr[oallele_column]
+    eallele = arr[eallele_column]
+    chr = arr[chr_column]
+    bp = arr[bp_column]
+    #print(beta)
+    se = arr[se_column]
+    if beta == "beta" or beta == "Beta" or beta == 'NA' or se == 'NA' or se == 'standard_error': #skip header and extra rows
         continue
     zscore = float(beta)/float(se)
-    snpid = chr + "_" + bp + "_" + oallele + "_" + eallele + "_b37"
+    snpid = chr + "_" + bp + "_" + str(oallele).capitalize() + "_" + str(eallele).capitalize() + "_b37"
     zdict[snpid] = zscore
-
+print(snpid)
 #store each LD block in a tuple list, i.e.
 # [(Loc#, chr, start, stop), ...]
 counter = 0
@@ -68,17 +82,21 @@ for line in open(ldfile):
     locus = "Loc" + str(counter)
     locuslist.append((locus, chr, start, stop))
 
+
 #generate Z-score file with LD block locus file for intersection SNPs
 zout = open(outprefix + ".torus.zval.txt","w")
 for line in gzip.open(annotfile):
     arr = line.strip().split()
     snp = arr[2].decode("utf-8")
     if snp in zdict:
-        (chr, pos,ref,alt,build) = snp.split("_")
+        (chr, pos, ref, alt, build) = snp.split("_")
         pos = float(pos)
         for item in locuslist:
             (loc, c, start, stop) = item
+            #start = float(start)
+            #stop = float(stop)
             if chr == c and pos >= start and pos < stop:
                 zout.write(snp + "\t" + loc + "\t" +  str(zdict[snp]) + "\n")
+
 
 zout.close()
