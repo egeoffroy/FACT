@@ -43,7 +43,7 @@ find_beta_se <- function(x){
                         bp <- grep("base_pair_location", names_data)-1
                 }
         }
-        col_list <- c(beta, se, chr, bp, oa, ae)
+        col_list <- c(beta, se, chr, bp, oa, ae) #return numbers of particular columns
         return(col_list)
 }
-write.csv(find_beta_se(args[1]), "column_numbers.csv", quote = F, row.names=F)
+write.csv(find_beta_se(args[1]), "column_numbers.csv", quote = F, row.names=F) #write out column numbers to csv file
