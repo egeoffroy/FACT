@@ -40,7 +40,7 @@ outprefix = args.outprefix
 #get column names for beta and se from R function
 column = open("column_numbers.csv").readlines()
 beta_column = int(column[1].replace('\n', ''))
-se_column = int(column[2].replace('\n', ''))
+se_column = int(column[2].replace('\n', '')) #assign appropriate column numbers
 chr_column = int(column[3].replace('\n', ''))
 bp_column = int(column[4].replace('\n', ''))
 oallele_column = int(column[5].replace('\n', ''))
@@ -54,7 +54,7 @@ for line in gzip.open(sumstatsfile):
     #convert bytes to str for each item in list
     arr = [x.decode("utf-8") for x in arr]
     #(chr, bp, oallele, eallele) = arr[0:4]
-    beta = arr[beta_column]
+    beta = arr[beta_column] #pull columns
     oallele = arr[oallele_column]
     eallele = arr[eallele_column]
     chr = arr[chr_column]
